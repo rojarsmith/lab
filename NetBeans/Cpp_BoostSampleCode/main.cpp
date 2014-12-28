@@ -23,6 +23,7 @@ int main(int argc, char** argv) {
     boost::uniform_int<> uniform_dist(0, 5);
     boost::variate_generator<boost::mt19937&, boost::uniform_int<> > dice_roller(rng, uniform_dist);
 
+    // get reslut.
     for (int i = 0; i < 1000000; ++i) ++frequencies[dice_roller()];
 
     std::cout << "テスト" << std::endl;
