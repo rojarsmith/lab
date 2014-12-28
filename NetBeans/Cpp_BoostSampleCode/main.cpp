@@ -2,7 +2,7 @@
  * File:   main.cpp
  * Author: Rojar Smith
  *
- * Created on 2014年12月28日, 下午 12:38
+ * Created on 2014/12/28, 00:38
  */
 
 #include <cstdlib>
