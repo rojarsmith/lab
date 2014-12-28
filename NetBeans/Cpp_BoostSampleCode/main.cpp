@@ -31,6 +31,6 @@ int main(int argc, char** argv) {
         std::cout << "骰子 " << i + 1 << " 點擲到了 " << frequencies[i] << " 次" << std::endl;
     }
 
-    return 0;
+    return (EXIT_SUCCESS);
 }
 
