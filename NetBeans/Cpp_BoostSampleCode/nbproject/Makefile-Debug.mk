@@ -35,16 +35,17 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/download_from_url.o \
 	${OBJECTDIR}/main.o \
-	${OBJECTDIR}/sample.o
+	${OBJECTDIR}/random.o
 
 
 # C Compiler Flags
 CFLAGS=
 
 # CC Compiler Flags
-CCFLAGS=
-CXXFLAGS=
+CCFLAGS=-m64
+CXXFLAGS=-m64
 
 # Fortran Compiler Flags
 FFLAGS=
@@ -53,7 +54,7 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=
+LDLIBSOPTIONS=-L../../../../Library/Cpp/boost_1_57_0_bin/lib -lboost_system-mgw49-1_57
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
@@ -61,17 +62,22 @@ LDLIBSOPTIONS=
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cpp_boostsamplecode.exe: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cpp_boostsamplecode ${OBJECTFILES} ${LDLIBSOPTIONS}
+	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cpp_boostsamplecode ${OBJECTFILES} ${LDLIBSOPTIONS} -lws2_32
+
+${OBJECTDIR}/download_from_url.o: download_from_url.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I../../../../Library/Cpp/boost_1_57_0_bin/include/boost-1_57 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/download_from_url.o download_from_url.cpp
 
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I/D/Data/Main/Build/Library/Cpp/Boost/include/boost-1_57/ -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
+	$(COMPILE.cc) -g -I../../../../Library/Cpp/boost_1_57_0_bin/include/boost-1_57 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
 
-${OBJECTDIR}/sample.o: sample.cpp 
+${OBJECTDIR}/random.o: random.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I/D/Data/Main/Build/Library/Cpp/Boost/include/boost-1_57/ -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/sample.o sample.cpp
+	$(COMPILE.cc) -g -I../../../../Library/Cpp/boost_1_57_0_bin/include/boost-1_57 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/random.o random.cpp
 
 # Subprojects
 .build-subprojects:

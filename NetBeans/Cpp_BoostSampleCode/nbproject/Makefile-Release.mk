@@ -35,8 +35,9 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/download_from_url.o \
 	${OBJECTDIR}/main.o \
-	${OBJECTDIR}/sample.o
+	${OBJECTDIR}/random.o
 
 
 # C Compiler Flags
@@ -63,15 +64,20 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cpp_boostsamplecode.exe: ${OBJECTFILE
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cpp_boostsamplecode ${OBJECTFILES} ${LDLIBSOPTIONS}
 
+${OBJECTDIR}/download_from_url.o: download_from_url.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/download_from_url.o download_from_url.cpp
+
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
 
-${OBJECTDIR}/sample.o: sample.cpp 
+${OBJECTDIR}/random.o: random.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/sample.o sample.cpp
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/random.o random.cpp
 
 # Subprojects
 .build-subprojects:
