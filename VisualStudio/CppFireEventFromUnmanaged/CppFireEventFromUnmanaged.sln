@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CppFireEventFromUnmanaged", "CppFireEventFromUnmanaged\CppFireEventFromUnmanaged.vcxproj", "{C98BEE93-6641-4BE3-9140-F26D110C6144}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C98BEE93-6641-4BE3-9140-F26D110C6144}.Debug|Win32.ActiveCfg = Debug|Win32
+		{C98BEE93-6641-4BE3-9140-F26D110C6144}.Debug|Win32.Build.0 = Debug|Win32
+		{C98BEE93-6641-4BE3-9140-F26D110C6144}.Release|Win32.ActiveCfg = Release|Win32
+		{C98BEE93-6641-4BE3-9140-F26D110C6144}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
