@@ -16,7 +16,6 @@ public:
     explicit Dialog(QWidget *parent = 0);
     ~Dialog();
 
-
 private:
     Ui::Dialog *ui;
     MyThread *mThread;
