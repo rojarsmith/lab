@@ -1,23 +1,28 @@
 #ifndef MYBOOSTTHREAD
 #define MYBOOSTTHREAD
 
-//#include "boost/system/error_code.hpp"
-#include "boost/thread.hpp"
+#include <QObject>
+//#include "boost/thread.hpp"
 
 //using namespace boost;
 
-class MyBoostThread {
+class MyBoostThread: public QObject {
+    // Q_OBJECT
 public:
   MyBoostThread();
   //~BoostThread();
   //bool stop;
   void run();
-  void(*changeNumber)(int var1);
-  //void changeNumber(int);
 
+  //void changeNumber(int);
+  //boost::thread _thread;
+protected:
+
+public slots:
+  void(__stdcall *changeNumber)(int num);
 private:
   void runLogic();
-  //boost::thread *_thread;
+
 };
 
 #endif // MYBOOSTTHREAD

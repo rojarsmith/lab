@@ -19,11 +19,15 @@ public:
 private:
     Ui::Dialog *ui;
     MyThread *mThread;
+
 public slots:
+    void changeLabel(int num);
     void onNumberChanged(int);
+    void onChangeLabel(int num);
 private slots:
     void on_pushButton_clicked();
     void on_pushButton_2_clicked();
+    void on_pushButton_run_clicked();
 };
 
 #endif // DIALOG_H
