@@ -20,9 +20,11 @@ HEADERS  += mainwindow.h \
 
 FORMS    += mainwindow.ui
 
-win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../Library/Cpp/boost_1_57_0_mingw_32bit/lib/ -lboost_filesystem-mgw49-mt-1_57 -lboost_system-mgw49-mt-1_57 -lboost_iostreams-mgw49-mt-1_57 -lboost_date_time-mgw49-mt-1_57
-else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../Library/Cpp/boost_1_57_0_mingw_32bit/lib/ -lboost_filesystem-mgw49-mt-d-1_57 -lboost_system-mgw49-mt-1_57 -lboost_iostreams-mgw49-mt-d-1_57 -lboost_date_time-mgw49-mt-d-1_57
-else:unix: LIBS += -L$$PWD/../../Library/Cpp/boost_1_57_0_mingw_32bit/lib/ -lboost_filesystem-mgw49-mt-1_57
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../../../Library/Cpp/boost_1_57_0/build_mingw_32/lib/ -lboost_filesystem-mgw49-mt-1_57 -lboost_system-mgw49-mt-1_57 -lboost_iostreams-mgw49-mt-1_57 -lboost_date_time-mgw49-mt-1_57
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../../../Library/Cpp/boost_1_57_0/build_mingw_32/lib/ -lboost_filesystem-mgw49-mt-d-1_57 -lboost_system-mgw49-mt-1_57 -lboost_iostreams-mgw49-mt-d-1_57 -lboost_date_time-mgw49-mt-d-1_57
+else:unix: LIBS += -L$$PWD/../../../../Library/Cpp/boost_1_57_0/build_mingw_32/lib/ -lboost_filesystem-mgw49-mt-1_57
 
-INCLUDEPATH += $$PWD/../../Library/Cpp/boost_1_57_0_mingw_32bit/include/boost-1_57
-DEPENDPATH += $$PWD/../../Library/Cpp/boost_1_57_0_mingw_32bit/include/boost-1_57
+INCLUDEPATH += $$PWD/../../../../Library/Cpp/boost_1_57_0/build_mingw_32/include/boost-1_57
+DEPENDPATH += $$PWD/../../../../Library/Cpp/boost_1_57_0/build_mingw_32/include/boost-1_57
+
+
