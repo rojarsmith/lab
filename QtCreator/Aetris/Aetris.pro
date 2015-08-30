@@ -13,10 +13,10 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp \
     tetriswidget.cpp
 
-HEADERS  += mainwindow.h \
+HEADERS  += \
     tetriswidget.h
 
-FORMS    += mainwindow.ui
+FORMS    += \
+    tetriswidget.ui

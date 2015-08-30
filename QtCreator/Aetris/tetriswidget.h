@@ -45,13 +45,23 @@ class TetrisWidget : public QWidget
     Q_OBJECT
 
 public:
+    void InitGame(); //初始化
+
     //void BlockMove(Direction dir); //方塊變動
     void GetBorder(int block[4][4],Border &border); //計算邊界
 
 
+
+public:
+    explicit TetrisWidget(QWidget *parent = 0);
+    ~TetrisWidget();
+
     virtual void paintEvent(QPaintEvent *event); //場景刷新
     //virtual void timerEvent(QTimerEvent *event); //定時器事件
     //virtual void keyPressEvent(QKeyEvent *event); //鍵盤響應
+
+private:
+    Ui::TetrisWidget *ui;
 
 private:
 
@@ -63,6 +73,8 @@ private:
     int score;  //遊戲分數
     int game_timer; //方塊下落計時器
     int paint_timer; //渲染刷新計時器
+    int speed_ms; //下落時間間隔
+    int refresh_ms; //刷新時間間隔
 };
 
 #endif // TETRISWIDGET
