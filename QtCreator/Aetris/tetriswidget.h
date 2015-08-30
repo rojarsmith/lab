@@ -46,25 +46,29 @@ class TetrisWidget : public QWidget
 
 public:
     void InitGame(); //初始化
+    void StartGame(); //開始遊戲
+    void GameOver(); //遊戲結束
 
-    //void BlockMove(Direction dir); //方塊變動
+    void ResetBlock(); //重置方塊
+    void BlockMove(Direction dir); //方塊變動
+    void BlockRotate(int block[4][4]); //方塊旋轉
+    void CreateBlock(int block[4][4],int block_id); //產生方塊
     void GetBorder(int block[4][4],Border &border); //計算邊界
-
-
+    void ConvertStable(int x,int y); //轉換為穩定方塊
+    bool IsCollide(int x,int y,Direction dir); //判斷是否會碰撞
 
 public:
     explicit TetrisWidget(QWidget *parent = 0);
     ~TetrisWidget();
 
     virtual void paintEvent(QPaintEvent *event); //場景刷新
-    //virtual void timerEvent(QTimerEvent *event); //定時器事件
-    //virtual void keyPressEvent(QKeyEvent *event); //鍵盤響應
+    virtual void timerEvent(QTimerEvent *event); //定時器事件
+    virtual void keyPressEvent(QKeyEvent *event); //鍵盤響應
 
 private:
     Ui::TetrisWidget *ui;
 
 private:
-
     int game_area[AREA_ROW][AREA_COL]; //場景區域，1表示活動的方塊，2表示穩定的方塊，0表示空
     block_point block_pos; //當前方塊坐標
     int cur_block[4][4]; //當前方塊形狀
