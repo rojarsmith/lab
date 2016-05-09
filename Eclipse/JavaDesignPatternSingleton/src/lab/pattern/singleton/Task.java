@@ -1,4 +1,4 @@
-package lab;
+package lab.pattern.singleton;
 
 public class Task extends Thread {
 

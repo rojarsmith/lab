@@ -1,4 +1,4 @@
-package lab;
+package lab.reflection;
 
 public class Tom extends Persion {
 

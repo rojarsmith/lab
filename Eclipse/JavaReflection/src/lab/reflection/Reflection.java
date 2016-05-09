@@ -1,11 +1,11 @@
-package lab;
+package lab.reflection;
 
 import java.lang.reflect.Constructor;
 import java.util.HashMap;
 
 public class Reflection {
 
-	private final static String PERSIONNAMESPACE_STRING = "lab.";
+	private final static String PERSIONNAMESPACE_STRING = "lab.reflection.";
 	private static HashMap<Integer, Persion> persionMap;
 
 	static {
