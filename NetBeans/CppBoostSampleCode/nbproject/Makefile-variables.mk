@@ -9,16 +9,16 @@ CND_DISTDIR=dist
 # Debug configuration
 CND_PLATFORM_Debug=MinGW-Windows
 CND_ARTIFACT_DIR_Debug=dist/Debug/MinGW-Windows
-CND_ARTIFACT_NAME_Debug=cpp_boostsamplecode
-CND_ARTIFACT_PATH_Debug=dist/Debug/MinGW-Windows/cpp_boostsamplecode
+CND_ARTIFACT_NAME_Debug=cppboostsamplecode
+CND_ARTIFACT_PATH_Debug=dist/Debug/MinGW-Windows/cppboostsamplecode
 CND_PACKAGE_DIR_Debug=dist/Debug/MinGW-Windows/package
 CND_PACKAGE_NAME_Debug=cppboostsamplecode.tar
 CND_PACKAGE_PATH_Debug=dist/Debug/MinGW-Windows/package/cppboostsamplecode.tar
 # Release configuration
 CND_PLATFORM_Release=MinGW-Windows
 CND_ARTIFACT_DIR_Release=dist/Release/MinGW-Windows
-CND_ARTIFACT_NAME_Release=cpp_boostsamplecode
-CND_ARTIFACT_PATH_Release=dist/Release/MinGW-Windows/cpp_boostsamplecode
+CND_ARTIFACT_NAME_Release=cppboostsamplecode
+CND_ARTIFACT_PATH_Release=dist/Release/MinGW-Windows/cppboostsamplecode
 CND_PACKAGE_DIR_Release=dist/Release/MinGW-Windows/package
 CND_PACKAGE_NAME_Release=cppboostsamplecode.tar
 CND_PACKAGE_PATH_Release=dist/Release/MinGW-Windows/package/cppboostsamplecode.tar

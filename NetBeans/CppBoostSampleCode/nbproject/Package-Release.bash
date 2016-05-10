@@ -13,8 +13,8 @@ CND_BUILDDIR=build
 CND_DLIB_EXT=dll
 NBTMPDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}/tmp-packaging
 TMPDIRNAME=tmp-packaging
-OUTPUT_PATH=${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cpp_boostsamplecode
-OUTPUT_BASENAME=cpp_boostsamplecode
+OUTPUT_PATH=${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cppboostsamplecode
+OUTPUT_BASENAME=cppboostsamplecode
 PACKAGE_TOP_DIR=cppboostsamplecode/
 
 # Functions

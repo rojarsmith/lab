@@ -58,11 +58,11 @@ LDLIBSOPTIONS=-L../../../../Library/Cpp/boost_1_57_0_bin/lib -lboost_system-mgw4
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cpp_boostsamplecode.exe
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cppboostsamplecode.exe
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cpp_boostsamplecode.exe: ${OBJECTFILES}
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cppboostsamplecode.exe: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cpp_boostsamplecode ${OBJECTFILES} ${LDLIBSOPTIONS} -lws2_32
+	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cppboostsamplecode ${OBJECTFILES} ${LDLIBSOPTIONS} -lws2_32
 
 ${OBJECTDIR}/download_from_url.o: download_from_url.cpp 
 	${MKDIR} -p ${OBJECTDIR}
@@ -85,7 +85,7 @@ ${OBJECTDIR}/random.o: random.cpp
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
-	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cpp_boostsamplecode.exe
+	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cppboostsamplecode.exe
 
 # Subprojects
 .clean-subprojects:
