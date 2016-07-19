@@ -8,15 +8,15 @@
 
     <fragment
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:name="lab.flagquiz.SettingsActivityFragment"
         android:id="@+id/settingsActivityFragment"
         android:layout_weight="1"
-        />
+        tools:layout="@layout/fragment_settings" />
 
     <fragment
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:name="lab.flagquiz.MainActivityFragment"
         android:id="@+id/quizFragment"
         android:layout_weight="2"
