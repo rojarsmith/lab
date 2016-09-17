@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Insert title here</title>
+
+<link href="/webjars/materializecss/0.97.7/css/materialize.css"
+	type="text/css" rel="stylesheet" media="screen,projection" />
+</head>
+<body>
+	<div class="row">
+		<h2 class="indigo-text center" th:text="|Tweet results for ${search}|">Search</h2>
+		<ul class="collection">
+			<li class="collection-item avatar" th:each="msg1 : ${tweets}">
+			<img
+				th:src="${msg1.user.profileImageUrl}" alt="" class="circle" />
+				<span class="title" th:text="${msg1.user.name}">Username</span>
+				<p th:text="${msg1.text}">Tweet message</p>
+				</li>
+				
+		</ul>
+	</div>
+
+	<script src="/webjars/jquery/3.1.0/jquery.js"></script>
+	<script src="/webjars/materializecss/0.97.7/js/materialize.js"></script>
+</body>
+</html>
