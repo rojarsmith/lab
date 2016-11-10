@@ -16,6 +16,30 @@
   	<description></description>
   	<servlet-class>lab.java.servletbasic.ServletB</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>ServletC</servlet-name>
+  	<display-name>ServletC</display-name>
+  	<description></description>
+  	<servlet-class>lab.java.servletbasic.ServletC</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>ServletIndex</servlet-name>
+  	<display-name>ServletIndex</display-name>
+  	<description></description>
+  	<servlet-class>lab.java.servletbasic.ServletIndex</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>ServletLogin</servlet-name>
+  	<display-name>ServletLogin</display-name>
+  	<description></description>
+  	<servlet-class>lab.java.servletbasic.ServletLogin</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>ServletWelcome</servlet-name>
+  	<display-name>ServletWelcome</display-name>
+  	<description></description>
+  	<servlet-class>lab.java.servletbasic.ServletWelcome</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>ServletA</servlet-name>
   	<url-pattern>/ServletA</url-pattern>
@@ -23,5 +47,21 @@
   <servlet-mapping>
   	<servlet-name>ServletB</servlet-name>
   	<url-pattern>/ServletB</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ServletC</servlet-name>
+  	<url-pattern>/ServletC</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ServletIndex</servlet-name>
+  	<url-pattern>/ServletIndex</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ServletLogin</servlet-name>
+  	<url-pattern>/ServletLogin</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ServletWelcome</servlet-name>
+  	<url-pattern>/ServletWelcome</url-pattern>
   </servlet-mapping>
 </web-app>

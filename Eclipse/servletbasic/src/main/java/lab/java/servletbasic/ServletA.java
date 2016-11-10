@@ -8,6 +8,8 @@ import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 public class ServletA implements Servlet {
 	ServletConfig config = null;
@@ -19,6 +21,16 @@ public class ServletA implements Servlet {
 
 	public void service(ServletRequest req, ServletResponse res) throws IOException, ServletException {
 
+		HttpServletRequest request;
+		HttpServletResponse response;
+		
+		try{
+			request = (HttpServletRequest)req;
+			response = (HttpServletResponse)res;
+		}catch(ClassCastException e){
+			throw new ServletException("non-HTTP request or response");
+		}
+		
 		res.setContentType("text/html");
 
 		PrintWriter out = res.getWriter();
