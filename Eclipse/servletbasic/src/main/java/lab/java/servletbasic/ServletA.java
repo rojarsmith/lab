@@ -19,6 +19,7 @@ public class ServletA implements Servlet {
 		System.out.println("servlet is initialized");
 	}
 
+	@SuppressWarnings("unused")
 	public void service(ServletRequest req, ServletResponse res) throws IOException, ServletException {
 
 		HttpServletRequest request;
