@@ -8,6 +8,9 @@
 		<param-name>Dname</param-name>
 		<param-value>sun.jdbc.odbc.JdbcOdbcDriver</param-value>
 	</context-param>
+	<listener>
+		<listener-class>lab.java.servletbasic.MyServletContextListener</listener-class>
+	</listener>
 	<servlet>
 		<servlet-name>ServletA</servlet-name>
 		<display-name>ServletA</display-name>
@@ -82,6 +85,12 @@
 		<description></description>
 		<servlet-class>lab.java.servletbasic.ServletH</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>ServletPGSQL</servlet-name>
+		<display-name>ServletPGSQL</display-name>
+		<description></description>
+		<servlet-class>lab.java.servletbasic.ServletPGSQL</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>ServletA</servlet-name>
 		<url-pattern>/ServletA</url-pattern>
@@ -125,5 +134,9 @@
 	<servlet-mapping>
 		<servlet-name>ServletH</servlet-name>
 		<url-pattern>/ServletH</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ServletPGSQL</servlet-name>
+		<url-pattern>/ServletPGSQL</url-pattern>
 	</servlet-mapping>
 </web-app>
