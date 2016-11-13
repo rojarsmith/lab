@@ -8,6 +8,20 @@
 		<param-name>Dname</param-name>
 		<param-value>sun.jdbc.odbc.JdbcOdbcDriver</param-value>
 	</context-param>
+	<filter>
+		<filter-name>FilterA</filter-name>
+		<display-name>FilterA</display-name>
+		<description></description>
+		<filter-class>lab.java.servletbasic.filter.FilterA</filter-class>
+		<init-param>
+			<param-name>construction</param-name>
+			<param-value>no</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>FilterA</filter-name>
+		<servlet-name>ServletFilterA</servlet-name>
+	</filter-mapping>
 	<listener>
 		<listener-class>lab.java.servletbasic.MyServletContextListener</listener-class>
 	</listener>
@@ -91,6 +105,12 @@
 		<description></description>
 		<servlet-class>lab.java.servletbasic.ServletPGSQL</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>ServletFilterA</servlet-name>
+		<display-name>ServletFilterA</display-name>
+		<description></description>
+		<servlet-class>lab.java.servletbasic.ServletFilterA</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>ServletA</servlet-name>
 		<url-pattern>/ServletA</url-pattern>
@@ -138,5 +158,9 @@
 	<servlet-mapping>
 		<servlet-name>ServletPGSQL</servlet-name>
 		<url-pattern>/ServletPGSQL</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ServletFilterA</servlet-name>
+		<url-pattern>/ServletFilterA</url-pattern>
 	</servlet-mapping>
 </web-app>
