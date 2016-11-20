@@ -151,7 +151,6 @@
 			<target name="debug" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>cmake</buildCommand>
 				<buildArguments>-E chdir ./build/debug cmake -G "MinGW Makefiles" -DCMAKE_BUILD_TYPE=Debug -DV1:=debug-dist ../../</buildArguments>
-				<buildTarget/>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>false</useDefaultCommand>
 				<runAllBuilders>true</runAllBuilders>
@@ -159,7 +158,6 @@
 			<target name="release" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
 				<buildCommand>cmake</buildCommand>
 				<buildArguments>-E chdir ./build/release cmake -G "MinGW Makefiles" -DCMAKE_BUILD_TYPE=release -DV1:=release-dist ../../</buildArguments>
-				<buildTarget/>
 				<stopOnError>true</stopOnError>
 				<useDefaultCommand>false</useDefaultCommand>
 				<runAllBuilders>true</runAllBuilders>
