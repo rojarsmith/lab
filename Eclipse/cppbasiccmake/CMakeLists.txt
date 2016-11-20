@@ -1,0 +1,20 @@
+# config
+cmake_minimum_required(VERSION 3.0)
+
+PROJECT(cppbasiccmake)
+
+# working directory
+SET(PROJECT_BINARY_DIR ${PROJECT_SOURCE_DIR}/build)
+SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/${V1})
+
+# source
+AUX_SOURCE_DIRECTORY(./src SRC_LIST)
+ 
+message(STATUS "V1 = ${V1}") # V1:  
+message(STATUS "SRC_LIST = ${SRC_LIST}")
+message(STATUS "CMAKE_SOURCE_DIR = ${CMAKE_SOURCE_DIR}")
+message(STATUS "CMAKE_BINARY_DIR = ${CMAKE_BINARY_DIR}")
+message(STATUS "EXECUTABLE_OUTPUT_PATH = ${PROJECT_BINARY_DIR}/${V1}")
+
+# target
+ADD_EXECUTABLE(cbc ${SRC_LIST})
