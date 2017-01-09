@@ -42,8 +42,22 @@ void func1() {
 	}
 }
 
+int factorial(int i){
+  if(i <= 1){
+	  return 1;
+  }else{
+	  return i * factorial(i - 1);
+  }
+}
+
+void func3() {
+	int f1 = factorial(3);
+	printf("%d\n", f1);
+}
+
 int main() {
-	func2();
+	func3();
+	//func2();
 	//func1();
 	return 0;
 }
