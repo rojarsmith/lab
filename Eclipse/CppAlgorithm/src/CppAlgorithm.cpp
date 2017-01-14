@@ -8,11 +8,13 @@
 
 #include <iostream>
 #include "leetcode\TwoSum.h"
+#include "leetcode\ZigZagConversion.h"
 
 using namespace std;
 
 int main() {
-	TwoSum obj1;
+	ZigZagConversion zigZagConversion;
+	TwoSum twoSum;
 
 	return 0;
 }
