@@ -14,8 +14,8 @@
 using namespace std;
 
 int main() {
-	StructLab structlab;
-	EnumLab enumlab;
+	//StructLab structlab;
+	//EnumLab enumlab;
 	PointerLab pointerlab;
 
 	return 0;
