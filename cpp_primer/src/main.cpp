@@ -17,8 +17,8 @@ using namespace std;
 int main() {
 	//StructLab structlab;
 	//EnumLab enumlab;
-	//PointerLab pointerlab;
-	IostreamLab iostream;
+	PointerLab pointerlab;
+	//IostreamLab iostream;
 
 	return 0;
 }
