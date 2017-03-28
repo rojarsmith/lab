@@ -11,14 +11,16 @@
 #include "EnumLab.hpp"
 #include "PointerLab.hpp"
 #include "IostreamLab.hpp"
+#include "ReferenceLab.hpp"
 
 using namespace std;
 
 int main() {
 	//StructLab structlab;
 	//EnumLab enumlab;
-	PointerLab pointerlab;
-	//IostreamLab iostream;
+	//PointerLab pointerlab;
+	//IostreamLab iostreamlab;
+	ReferenceLab referencelab;
 
 	return 0;
 }
