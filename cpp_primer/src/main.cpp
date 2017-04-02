@@ -12,6 +12,7 @@
 #include "PointerLab.hpp"
 #include "IostreamLab.hpp"
 #include "ReferenceLab.hpp"
+#include "TemplateLab.hpp"
 
 using namespace std;
 
@@ -20,7 +21,8 @@ int main() {
 	//EnumLab enumlab;
 	//PointerLab pointerlab;
 	//IostreamLab iostreamlab;
-	ReferenceLab referencelab;
+	//ReferenceLab referencelab;
+	TemplateLab templatelab;
 
 	return 0;
 }
