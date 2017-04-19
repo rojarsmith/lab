@@ -1,0 +1,19 @@
+﻿# Visual Studio and other
+**/**/**/build/
+**/**/**/generated/
+**/**/**/*.suo
+**/*.opensdf
+**/*.sdf
+**/simulator/msvs/.vs/
+
+# IAR
+/EWARM/**/Debug
+/EWARM/**/settings
+/EWARM/**/*.dep
+/EWARM/**/*.ewt
+
+#Keil
+**/**/Keil/binary
+**/**/Keil/DebugConfig
+**/**/Keil/Flash
+**/**/Keil/Listings
