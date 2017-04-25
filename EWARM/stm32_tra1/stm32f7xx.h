@@ -1,12 +1,17 @@
-/*¤ù¤W¥~³]°ò¦a§} */ 
+#ifndef _STM32F7XX_H
+#define _STM32F7XX_H
+
+#include "stdint.h"
+
+/*ç‰‡ä¸Šå¤–è¨­åŸºåœ°å€ */ 
 #define PERIPH_BASE ((unsigned int)0x40000000) 
-/*Á`½u°ò¦a§} */ 
+/*ç¸½ç·šåŸºåœ°å€ */ 
 #define AHB1PERIPH_BASE (PERIPH_BASE + 0x00020000) 
-/*GPIO¥~³]°ò¦a§}*/ 
+/*GPIOå¤–è¨­åŸºåœ°å€*/ 
 #define GPIOH_BASE (AHB1PERIPH_BASE + 0x1C00)
 #define GPIOI_BASE (AHB1PERIPH_BASE + 0x2000)
 
-/* GPIOH±H¦s¾¹¦a§},±j¨îÂà´«¦¨«ü°w */ 
+/* GPIOHå¯„å­˜å™¨åœ°å€,å¼·åˆ¶è½‰æ›æˆæŒ‡é‡ */ 
 #define GPIOH_MODER *(unsigned int*)(GPIOH_BASE+0x00) 
 #define GPIOH_OTYPER *(unsigned int*)(GPIOH_BASE+0x04) 
 #define GPIOH_OSPEEDR *(unsigned int*)(GPIOH_BASE+0x08) 
@@ -29,7 +34,9 @@
 #define GPIOI_AFRL *(unsigned int*)(GPIOI_BASE+0x20) 
 #define GPIOI_AFRH *(unsigned int*)(GPIOI_BASE+0x24)  
 
-/*RCC¥~³]°ò¦a§}*/ 
+/*RCCå¤–è¨­åŸºåœ°å€*/ 
 #define RCC_BASE (AHB1PERIPH_BASE + 0x3800) 
-/*RCCªºAHB1®ÉÄÁ¨Ï¯à±H¦s¾¹¦a§},±j¨îÂà´«¦¨«ü°w*/
+/*RCCçš„AHB1æ™‚é˜ä½¿èƒ½å¯„å­˜å™¨åœ°å€,å¼·åˆ¶è½‰æ›æˆæŒ‡é‡*/
 #define RCC_AHB1ENR *(unsigned int*)(RCC_BASE+0x30)
+
+#endif

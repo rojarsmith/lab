@@ -1934,6 +1934,9 @@
   <file>
     <name>$PROJ_DIR$\startup_stm32f746xx.s</name>
   </file>
+  <file>
+    <name>$PROJ_DIR$\stm32f7xx_gpio.c</name>
+  </file>
 </project>
 
 
