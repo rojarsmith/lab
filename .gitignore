@@ -5,6 +5,7 @@
 **/*.opensdf
 **/*.sdf
 **/simulator/msvs/.vs/
+**/simulator/msvs/screenshots/
 
 # IAR
 /EWARM/**/Debug
