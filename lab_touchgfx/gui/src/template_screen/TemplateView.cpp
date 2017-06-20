@@ -30,6 +30,7 @@ void TemplateView::setupScreen()
 	frame.setVisible(false);
 	add(frame);
 
+
 	button.setBitmaps(Bitmap(BITMAP_OK_112X56_ID), Bitmap(BITMAP_OK_P_112X56_ID));
 	button.setXY(50, 50);
 	button.setAction(buttonClickedCallback);
@@ -47,7 +48,8 @@ void TemplateView::buttonClicked(const AbstractButton& source)
 
 	if (trigger)
 	{
-		frame.setVisible(true);
+		frame.snap();
+		frame.setVisible(true);		
 		this->draw();
 	}
 	else{
