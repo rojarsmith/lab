@@ -27,7 +27,11 @@ public:
 
 protected:
 	uint16_t* fbCopy;
-	uint16_t* fbCopyS;
+	uint16_t* fbCopyRef;
+	uint16_t* fbCopyPtr;
+	uint16_t* fbCopyRefPtr;
+
+	void createFilter(float gKernel[][5]);
 };
 
 #endif /* GAUSSIAN_FRAME_HPP_ */
