@@ -142,7 +142,7 @@ void GaussianFrame::createFilter(float gKernel[][5])
 	{
 		for (int y = -2; y <= 2; y++)
 		{
-			r = (float)sqrt(x*x + y*y);
+			r = (float)sqrt((float)x*x + (float)y*y);
 			gKernel[x + 2][y + 2] = (exp(-(r*r) / s)) / (M_PI * s);
 			sum += gKernel[x + 2][y + 2];
 		}
