@@ -37,7 +37,7 @@ void GaussianFrame::snap()
 {
 	int points = getWidth() * getHeight();
 	fbCopy = reinterpret_cast<uint16_t*>(HAL::lcd().copyFrameBufferRegionToMemory(rect));
-	fbCopyRef = new uint16_t[points];
+	//fbCopyRef = new uint16_t[points];
 	for (int i = 0; i < (points); i++)
 	{
 		*(fbCopyRef + i) = *(fbCopy + i);
@@ -119,7 +119,7 @@ void GaussianFrame::snap()
 		//*fbCopyS = 0x001F; //Blue		
 	}
 
-	delete fbCopyRef;
+	//delete fbCopyRef;
 }
 
 void GaussianFrame::openTest()

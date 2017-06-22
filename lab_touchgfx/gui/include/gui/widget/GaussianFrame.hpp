@@ -27,7 +27,9 @@ public:
 
 protected:
 	uint16_t* fbCopy;
-	uint16_t* fbCopyRef;
+	static const int POINTS = 480 * 272;
+	uint16_t fbCopyRef[POINTS];
+	//uint16_t* fbCopyRef;
 	uint16_t* fbCopyPtr;
 	uint16_t* fbCopyRefPtr;
 
