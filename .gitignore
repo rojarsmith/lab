@@ -6,21 +6,21 @@
 **/*.sdf
 **/simulator/msvs/.vs/
 **/simulator/msvs/screenshots/
+**/ipch
+**/Debug
 
 # IAR
 /EWARM/**/Debug
 /EWARM/**/settings
 /EWARM/**/*.dep
 /EWARM/**/*.ewt
-/lab_touchgfx/**/Debug
-/lab_touchgfx/**/settings
-/lab_touchgfx/**/*.dep
-/lab_touchgfx/**/*.ewt
+**/IAR/Debug
+**/IAR/settings
+**/IAR/*.dep
+**/IAR/*.ewt
 
 #Keil
 **/**/Keil/binary
 **/**/Keil/DebugConfig
 **/**/Keil/Flash
 **/**/Keil/Listings
-/lab_touchgfx/target/ST/STM32F746G-DISCO/IAR/application.ewt
-/lab_touchgfx/target/ST/STM32F746G-DISCO/IAR/application.dep

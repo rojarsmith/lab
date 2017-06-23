@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workspace>
+    <project>
+        <path>$WS_DIR$\application.ewp</path>
+    </project>
+    <project>
+        <path>$WS_DIR$\..\..\..\..\..\touchgfx_evo\target\ST\STM32F746G-DISCO\IAR\library.ewp</path>
+    </project>
+    <batchBuild />
+</workspace>
