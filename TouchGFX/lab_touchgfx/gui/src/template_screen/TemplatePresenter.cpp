@@ -53,5 +53,6 @@ void TemplatePresenter::deactivate()
 
 void TemplatePresenter::timeUpdated(Time time)
 {
+	view.handleTimeUpdated(time.getValueInMillis());
 	//view.handleTimeUpdated(time.hours, time.minutes, time.seconds);
 }

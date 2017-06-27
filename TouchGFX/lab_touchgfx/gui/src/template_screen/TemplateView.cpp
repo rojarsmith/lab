@@ -7,6 +7,7 @@
 TemplateView::TemplateView()
 	:
 	trigger(0),
+	milliSecond(0),
 	buttonClickedCallback(this, &TemplateView::buttonClicked)
 {
 
@@ -64,4 +65,23 @@ void TemplateView::buttonClicked(const AbstractButton& source)
 		frame.setVisible(false);
 		this->draw();
 	}
+}
+
+void TemplateView::handleTimeUpdated(uint8_t hours, uint8_t minutes, uint8_t seconds)
+{
+	//currentSecondCounter = seconds;
+	//currentMinuteCounter = minutes;
+	////currentHourCounter counts from 0-59 due to the number of images of the hour hand
+	//currentHourCounter = ((hours % 12) * 5) + (minutes / 12);
+
+	//updateClock(currentHourCounter, currentMinuteCounter, currentSecondCounter);
+}
+
+void TemplateView::handleTimeUpdated(int millis)
+{
+	milliSecond = millis;
+}
+
+void TemplateView::handleTickEvent()
+{
 }

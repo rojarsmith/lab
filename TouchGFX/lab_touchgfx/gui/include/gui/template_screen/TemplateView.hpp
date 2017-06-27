@@ -44,7 +44,12 @@ public:
      */
     virtual void tearDownScreen();
 
+	virtual void handleTickEvent();
+
 	void buttonClicked(const AbstractButton& source);
+
+	void handleTimeUpdated(uint8_t hours, uint8_t minutes, uint8_t seconds);
+	void handleTimeUpdated(int millis);
 
 private:
 	bool trigger;
@@ -52,6 +57,10 @@ private:
 	Image background;
 	GaussianFrame frame;
 	Slider slider;
+
+	volatile int milliSecond;
+	int clock1Start;
+	int clock1End;
 
 	Callback<TemplateView, const AbstractButton&> buttonClickedCallback;
 };

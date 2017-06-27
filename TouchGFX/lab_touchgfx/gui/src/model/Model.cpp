@@ -34,6 +34,10 @@
 #include <gui/model/Model.hpp>
 #include <gui/model/ModelListener.hpp>
 
+#ifdef SIMULATOR
+#include <ctime>
+#endif
+
 static volatile long lastUs;
 #ifdef _MSC_VER
 uint32_t SystemCoreClock = 200 * 1000000;
@@ -62,8 +66,17 @@ void Model::tick()
 {
 	previousTime = currentTime;
 
-#ifndef SIMULATOR
-	static int milliseconds = 123456;
+#ifdef SIMULATOR	
+	time_t rawtime;
+	struct tm timenow;
+	time(&rawtime);
+	localtime_s(&timenow, &rawtime);
+
+	currentTime.hours =   timenow.tm_hour;
+	currentTime.minutes = timenow.tm_min;
+	currentTime.seconds = timenow.tm_sec;
+	currentTime.milliseconds = 0;
+#else
 	uint8_t mcuLoadPct = touchgfx::HAL::getInstance()->getMCULoadPct();
 	if (mcuLoadLast != /*mcu_load_pct*/ mcuLoadPct)
 	{
@@ -71,6 +84,7 @@ void Model::tick()
 		modelListener->mcuLoadUpdated(mcuLoadLast);
 	}
 
+	static int milliseconds = 123456;
 	long now = touchgfx::HAL::getInstance()->getCPUCycles();
 	milliseconds += (now - lastUs + freqMHz / 2) / freqMHz / 1000;
 	lastUs = now;
