@@ -50,14 +50,19 @@ Model::Model()
 	modelListener(0),
 	mcuLoadActive(true)
 {
+#ifndef SIMULATOR
 	lastUs = touchgfx::HAL::getInstance()->getCPUCycles();
 	freqMHz = SystemCoreClock / 1000000;
+#else
+	freqMHz = SystemCoreClock / 1000000;
+#endif
 }
 
 void Model::tick()
 {
 	previousTime = currentTime;
 
+#ifndef SIMULATOR
 	static int milliseconds = 123456;
 	uint8_t mcuLoadPct = touchgfx::HAL::getInstance()->getMCULoadPct();
 	if (mcuLoadLast != /*mcu_load_pct*/ mcuLoadPct)
@@ -73,7 +78,7 @@ void Model::tick()
 	currentTime.minutes = (milliseconds / 1000 / 60) % 60;
 	currentTime.seconds = (milliseconds / 1000) % 60;
 	currentTime.milliseconds = milliseconds % 1000;
-	//=========================================================================
+#endif
 
 	if (currentTime.seconds != previousTime.seconds)
 	{

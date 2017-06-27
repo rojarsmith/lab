@@ -21,10 +21,10 @@ void BasePresenter::mcuLoadSelected()
 
 void BasePresenter::mcuLoadUpdated(uint8_t mcuLoad)
 {
-    //if (model->getMCULoadActive())
-    //{
-    //    viewInterface.updateProcessorLoad(mcuLoad);
-    //}
+    if (model->getMCULoadActive())
+    {
+        viewInterface.updateProcessorLoad(mcuLoad);
+    }
 }
 
 void BasePresenter::viewStartupDone()
