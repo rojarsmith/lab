@@ -35,16 +35,23 @@
 #include <gui/template_screen/TemplateView.hpp>
 
 TemplatePresenter::TemplatePresenter(TemplateView& v)
-    : view(v)
+    :
+	BasePresenter(v),
+	view(v)
 {
 }
 
 void TemplatePresenter::activate()
 {
-
+	timeUpdated(model->getCurrentTime());
 }
 
 void TemplatePresenter::deactivate()
 {
 
+}
+
+void TemplatePresenter::timeUpdated(Time time)
+{
+	//view.handleTimeUpdated(time.hours, time.minutes, time.seconds);
 }

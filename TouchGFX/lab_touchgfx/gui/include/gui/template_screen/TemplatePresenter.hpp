@@ -1,41 +1,9 @@
-/******************************************************************************
- *
- * @brief     This file is part of the TouchGFX 4.8.0 standard distribution.
- *
- * @author    Draupner Graphics A/S <http://www.touchgfx.com>
- *
- ******************************************************************************
- *
- * @section Copyright
- *
- * This file is free software and is provided for example purposes. You may
- * use, copy, and modify within the terms and conditions of the license
- * agreement.
- *
- * This is licensed software, any use must strictly comply with the signed
- * license agreement and associated Terms & Conditions.
- *
- * Standard Terms & Conditions can be seen on www.touchgfx.com
- *
- * @section Disclaimer
- *
- * DISCLAIMER OF WARRANTY/LIMITATION OF REMEDIES: Draupner Graphics A/S has
- * no obligation to support this software. Draupner Graphics A/S is providing
- * the software "AS IS", with no express or implied warranties of any kind,
- * including, but not limited to, any implied warranties of merchantability
- * or fitness for any particular purpose or warranties against infringement
- * of any proprietary rights of a third party.
- *
- * Draupner Graphics A/S can not be held liable for any consequential,
- * incidental, or special damages, or any other relief, or for any claim by
- * any third party, arising from your use of this software.
- *
- *****************************************************************************/
 #ifndef TEMPLATE_PRESENTER_HPP
 #define TEMPLATE_PRESENTER_HPP
 
 #include <gui/model/ModelListener.hpp>
-#include <mvp/Presenter.hpp>
+#include <gui/common/BasePresenter.hpp>
+//#include <mvp/Presenter.hpp>
 
 using namespace touchgfx;
 
@@ -49,10 +17,11 @@ class TemplateView;
  * associated view, and uses this to update the view accordingly.
  *
  */
-class TemplatePresenter : public Presenter, public ModelListener
+class TemplatePresenter : public BasePresenter //public Presenter, public ModelListener
 {
 public:
     TemplatePresenter(TemplateView& v);
+	virtual ~TemplatePresenter() {};
 
     /**
      * The activate function is called automatically when this screen is "switched in"
@@ -66,7 +35,7 @@ public:
      */
     virtual void deactivate();
 
-    virtual ~TemplatePresenter() {};
+	virtual void timeUpdated(Time time);
 
 private:
     TemplatePresenter();

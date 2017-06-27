@@ -34,10 +34,52 @@
 #include <gui/model/Model.hpp>
 #include <gui/model/ModelListener.hpp>
 
-Model::Model() : modelListener(0)
+static volatile long lastUs;
+#ifdef _MSC_VER
+uint32_t SystemCoreClock = 200 * 1000000;
+#else
+extern uint32_t SystemCoreClock;
+#endif
+static int freqMHz;
+
+static uint8_t mcuLoadLast = 0;
+
+
+Model::Model()
+	:
+	modelListener(0),
+	mcuLoadActive(true)
 {
+	lastUs = touchgfx::HAL::getInstance()->getCPUCycles();
+	freqMHz = SystemCoreClock / 1000000;
 }
 
 void Model::tick()
 {
+	previousTime = currentTime;
+
+	static int milliseconds = 123456;
+	uint8_t mcuLoadPct = touchgfx::HAL::getInstance()->getMCULoadPct();
+	if (mcuLoadLast != /*mcu_load_pct*/ mcuLoadPct)
+	{
+		mcuLoadLast = mcuLoadPct;
+		modelListener->mcuLoadUpdated(mcuLoadLast);
+	}
+
+	long now = touchgfx::HAL::getInstance()->getCPUCycles();
+	milliseconds += (now - lastUs + freqMHz / 2) / freqMHz / 1000;
+	lastUs = now;
+	currentTime.hours = (milliseconds / 1000 / 60 / 60) % 24;
+	currentTime.minutes = (milliseconds / 1000 / 60) % 60;
+	currentTime.seconds = (milliseconds / 1000) % 60;
+	currentTime.milliseconds = milliseconds % 1000;
+	//=========================================================================
+
+	if (currentTime.seconds != previousTime.seconds)
+	{
+		if (modelListener)
+		{
+			modelListener->timeUpdated(currentTime);
+		}
+	}
 }

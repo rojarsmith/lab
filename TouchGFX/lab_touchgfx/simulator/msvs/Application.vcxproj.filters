@@ -177,6 +177,12 @@
     <ClCompile Include="..\..\gui\src\widget\GaussianFrame.cpp">
       <Filter>Source Files\gui\widget</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\gui\src\common\BasePresenter.cpp">
+      <Filter>Source Files\gui\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\common\McuLoadSlider.cpp">
+      <Filter>Source Files\gui\common</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\assets\texts\texts.xlsx">

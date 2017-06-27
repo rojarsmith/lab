@@ -15,7 +15,9 @@
     <ClCompile Include="$(TouchGFXReleasePath)\framework\source\platform\hal\simulator\sdl2\HALSDL2.cpp" />
     <ClCompile Include="$(TouchGFXReleasePath)\framework\source\platform\hal\simulator\sdl2\HALSDL2_icon.cpp" />
     <ClCompile Include="$(TouchGFXReleasePath)\framework\source\platform\hal\simulator\sdl2\OSWrappers.cpp" />
+    <ClCompile Include="..\..\gui\src\common\BasePresenter.cpp" />
     <ClCompile Include="..\..\gui\src\common\FrontendApplication.cpp" />
+    <ClCompile Include="..\..\gui\src\common\McuLoadSlider.cpp" />
     <ClCompile Include="..\..\gui\src\model\Model.cpp" />
     <ClCompile Include="..\..\gui\src\template_screen\TemplatePresenter.cpp" />
     <ClCompile Include="..\..\gui\src\template_screen\TemplateView.cpp" />

@@ -98,7 +98,7 @@ int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
     // Alternatively, instead of using printf(), always use
     // touchgfx_printf() which will ensure there is a console to write
     // to.
-    //touchgfx_enable_stdio();
+    touchgfx_enable_stdio();
 
     // Setup the CanvasWidgetRenderer. ONLY needed if you use CanvasWidgets
     // in your application. The CANVAS_BUFFER_SIZE can be adjusted to match

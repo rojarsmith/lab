@@ -60,6 +60,10 @@ public:
     {
         model = m;
     }
+
+	virtual void timeUpdated(Time time) {}
+
+	virtual void mcuLoadUpdated(uint8_t mcuLoad) {}
 protected:
     Model* model;
 };

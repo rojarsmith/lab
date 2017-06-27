@@ -3,7 +3,12 @@
 #include <touchgfx/Color.hpp>
 #include <touchgfx/EasingEquations.hpp>
 #include <cmath>
-//#include <iomanip>
+
+#ifdef _MSC_VER
+#include<iostream>
+#include <iomanip> 
+#include <windows.h>
+#endif
 
 GaussianFrame::GaussianFrame()
 {
@@ -35,13 +40,19 @@ touchgfx::Rect GaussianFrame::getSolidRect() const
 
 void GaussianFrame::snap()
 {
+#ifdef _MSC_VER
+	LARGE_INTEGER startTime, endTime, fre;
+	double times;
+	QueryPerformanceFrequency(&fre); //取得CPU頻率
+	QueryPerformanceCounter(&startTime); //取得開機到現在經過幾個CPU Cycle
+#endif
+
+
+
 	int r = 10;
 	float sigma = (float)(1.0 * r / 2.57);	//2.57 *sigam半徑之後基本沒有貢獻, 所以取sigma為 r / 2.57
 	int boxSize = 3;
 	int * boxes = boxesForGauss(sigma, boxSize);
-
-
-
 
 
 	int points = getWidth() * getHeight();
@@ -149,6 +160,13 @@ void GaussianFrame::snap()
 	//}
 
 	////delete fbCopyRef;
+
+
+#ifdef _MSC_VER
+	QueryPerformanceCounter(&endTime); //取得開機到程式執行完成經過幾個CPU Cycle
+	times = ((double)endTime.QuadPart - (double)startTime.QuadPart) / fre.QuadPart;
+	std::cout << std::fixed << std::setprecision(20) << times * 1000 << " ms" << std::endl;
+#endif
 }
 
 void GaussianFrame::openTest()

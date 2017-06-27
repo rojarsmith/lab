@@ -1,7 +1,8 @@
 #ifndef TEMPLATE_VIEW_HPP
 #define TEMPLATE_VIEW_HPP
 
-#include <mvp/View.hpp>
+#include <gui/common/BaseView.hpp>
+//#include <mvp/View.hpp>
 #include <gui/widget/GaussianFrame.hpp>
 #include <gui/template_screen/TemplatePresenter.hpp>
 #include <touchgfx/widgets/Button.hpp>
@@ -19,7 +20,7 @@ using namespace touchgfx;
  * By deriving from View, this class has a presenter pointer, which is configured
  * automatically.
  */
-class TemplateView : public View<TemplatePresenter>
+class TemplateView : public BaseView<TemplatePresenter>
 {
 public:
     /**

@@ -1044,9 +1044,24 @@
                 <file>
                     <name>$PROJ_DIR$\..\..\..\..\generated\fonts\src\ApplicationFontProvider.cpp</name>
                 </file>
+                <file>
+                    <name>$PROJ_DIR$\..\..\..\..\generated\fonts\src\Font_RobotoCondensed_Regular_12_4bpp.cpp</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\..\..\..\generated\fonts\src\FontGetters.cpp</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\..\..\..\generated\fonts\src\Kerning_RobotoCondensed_Regular_12_4bpp.cpp</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\..\..\..\generated\fonts\src\Table_RobotoCondensed_Regular_12_4bpp.cpp</name>
+                </file>
             </group>
             <group>
                 <name>images</name>
+                <file>
+                    <name>$PROJ_DIR$\..\..\..\..\generated\images\src\base_mcu_load_background.cpp</name>
+                </file>
                 <file>
                     <name>$PROJ_DIR$\..\..\..\..\generated\images\src\BitmapDatabase.cpp</name>
                 </file>
@@ -1072,6 +1087,9 @@
             <group>
                 <name>texts</name>
                 <file>
+                    <name>$PROJ_DIR$\..\..\..\..\generated\texts\src\LanguageGb.cpp</name>
+                </file>
+                <file>
                     <name>$PROJ_DIR$\..\..\..\..\generated\texts\src\Texts.cpp</name>
                 </file>
                 <file>
@@ -1084,7 +1102,13 @@
             <group>
                 <name>common</name>
                 <file>
+                    <name>$PROJ_DIR$\..\..\..\..\gui\src\common\BasePresenter.cpp</name>
+                </file>
+                <file>
                     <name>$PROJ_DIR$\..\..\..\..\gui\src\common\FrontendApplication.cpp</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\..\..\..\gui\src\common\McuLoadSlider.cpp</name>
                 </file>
             </group>
             <group>
