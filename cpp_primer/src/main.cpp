@@ -13,6 +13,7 @@
 #include "IostreamLab.hpp"
 #include "ReferenceLab.hpp"
 #include "TemplateLab.hpp"
+#include "ForwardDeclaration.hpp"
 
 using namespace std;
 
@@ -22,7 +23,8 @@ int main() {
 	//PointerLab pointerlab;
 	//IostreamLab iostreamlab;
 	//ReferenceLab referencelab;
-	TemplateLab templatelab;
+	//TemplateLab templatelab;
+	ForwardDeclaration forwardDeclaration;
 
 	return 0;
 }
