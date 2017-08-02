@@ -17,8 +17,8 @@ TemplateLab::TemplateLab() {
 	this->Swap(i, j);
 	cout << i << ", " << j << endl;
 
-	Job job1 = {"aaa", 100, 99.9};
-	Job job2 = {"bbb", 200, 55.5};
+	Job job1 = {"aaa", 100, int(99.9)};
+	Job job2 = {"bbb", 200, int(55.5)};
 	this->Swap(job1, job2);
 	cout << job1.salary << ", " << job1.floor << endl;
 }

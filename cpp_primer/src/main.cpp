@@ -14,6 +14,7 @@
 #include "ReferenceLab.hpp"
 #include "TemplateLab.hpp"
 #include "ForwardDeclaration.hpp"
+#include "Lambda.hpp"
 
 using namespace std;
 
@@ -24,7 +25,8 @@ int main() {
 	//IostreamLab iostreamlab;
 	//ReferenceLab referencelab;
 	//TemplateLab templatelab;
-	ForwardDeclaration forwardDeclaration;
+	//ForwardDeclaration forwardDeclaration;
+	Lambda lambda;
 
 	return 0;
 }
