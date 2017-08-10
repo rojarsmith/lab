@@ -24,3 +24,7 @@
 **/**/Keil/DebugConfig
 **/**/Keil/Flash
 **/**/Keil/Listings
+
+#QtCreator
+QtCreator/**/*.pro.user
+QtCreator/build-**
