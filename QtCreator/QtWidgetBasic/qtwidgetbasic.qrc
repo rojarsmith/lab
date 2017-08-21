@@ -2,5 +2,6 @@
     <qresource prefix="/">
         <file>images/save.png</file>
         <file>images/new.png</file>
+        <file>images/add_element.png</file>
     </qresource>
 </RCC>

@@ -10,14 +10,11 @@ class QGraphicsView;
 class QGraphicsScene;
 QT_END_NAMESPACE
 
-namespace Ui {
-class MainWindow;
-}
+class ToolBox;
 
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
-
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
@@ -25,7 +22,7 @@ public:
 private:
     void createActions();
 
-    Ui::MainWindow *ui;
+    ToolBox *m_wgtToolBox;
 
     QGraphicsView *graphicsView;
     QGraphicsScene *graphicsScene;

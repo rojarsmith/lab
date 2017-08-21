@@ -1,5 +1,5 @@
 #include "mainwindow.h"
-#include "ui_mainwindow.h"
+#include "toolbox/toolbox.h"
 #include <QtWidgets>
 #include <QGraphicsScene>
 
@@ -9,21 +9,26 @@
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::MainWindow),
+    m_wgtToolBox(new ToolBox),
     graphicsView(new QGraphicsView),
     graphicsScene(new QGraphicsScene)
-
 {
-    //ui->setupUi(this);
     setWindowTitle(tr("Macaca"));
-    setFixedSize(160*6, 90*6);
+    resize(160*6, 90*6);
     graphicsView->setScene(graphicsScene);
     setCentralWidget(graphicsView);
+
+    QDockWidget *dockProjectManager = new QDockWidget(tr("ProjectManager"), this);
+    dockProjectManager->setFeatures(QDockWidget::DockWidgetMovable);
+    dockProjectManager->setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
+    dockProjectManager->setMinimumWidth(150);
+    addDockWidget(Qt::LeftDockWidgetArea, dockProjectManager);
 
     QDockWidget *dockToolBox = new QDockWidget(tr("Toolbox"), this);
     dockToolBox->setFeatures(QDockWidget::DockWidgetMovable);
     dockToolBox->setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
     dockToolBox->setMinimumWidth(150);
+    dockToolBox->setWidget(m_wgtToolBox);
     addDockWidget(Qt::LeftDockWidgetArea, dockToolBox);
 
     QDockWidget *dockProperty = new QDockWidget(tr("Property"), this);
@@ -53,7 +58,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
 MainWindow::~MainWindow()
 {
-    //delete ui;
+    if(m_wgtToolBox) delete m_wgtToolBox;
 }
 
 void MainWindow::createActions()
