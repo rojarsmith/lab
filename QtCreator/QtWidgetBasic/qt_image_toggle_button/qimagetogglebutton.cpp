@@ -5,6 +5,7 @@ QImageToggleButton::QImageToggleButton(QWidget *parent)
       m_parentWidget(parent)
 {
     this->setCheckable(true);
+    this->setLocale(QLocale(QLocale::Chinese, QLocale::Taiwan));
     this->setStyleSheet(
                 "QPushButton:hover:!pressed {"
                 "background-color: rgb(167, 205, 255);"

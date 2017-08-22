@@ -10,16 +10,13 @@ class ToolBox;
 class ToolBox : public QWidget
 {
     Q_OBJECT
-
 public:
     explicit ToolBox(QWidget *parent = 0);
     ~ToolBox();
-
+private slots:
+   void handleButton();
 private:
     Ui::ToolBox *ui;
-signals:
-
-public slots:
 };
 
 #endif // TOOLBOX_H
