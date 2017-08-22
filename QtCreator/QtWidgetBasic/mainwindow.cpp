@@ -19,32 +19,32 @@ MainWindow::MainWindow(QWidget *parent) :
     setCentralWidget(graphicsView);
 
     QDockWidget *dockProjectManager = new QDockWidget(tr("ProjectManager"), this);
-    dockProjectManager->setFeatures(QDockWidget::DockWidgetMovable);
+    dockProjectManager->setFeatures(QDockWidget::DockWidgetMovable | QDockWidget::DockWidgetFloatable | QDockWidget::DockWidgetClosable);
     dockProjectManager->setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
     dockProjectManager->setMinimumWidth(150);
     addDockWidget(Qt::LeftDockWidgetArea, dockProjectManager);
 
     QDockWidget *dockToolBox = new QDockWidget(tr("Toolbox"), this);
-    dockToolBox->setFeatures(QDockWidget::DockWidgetMovable);
+    dockToolBox->setFeatures(QDockWidget::DockWidgetMovable | QDockWidget::DockWidgetFloatable | QDockWidget::DockWidgetClosable);
     dockToolBox->setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
     dockToolBox->setMinimumWidth(150);
     dockToolBox->setWidget(m_wgtToolBox);
     addDockWidget(Qt::LeftDockWidgetArea, dockToolBox);
 
     QDockWidget *dockProperty = new QDockWidget(tr("Property"), this);
-    dockProperty->setFeatures(QDockWidget::DockWidgetMovable);
+    dockProperty->setFeatures(QDockWidget::DockWidgetMovable | QDockWidget::DockWidgetFloatable | QDockWidget::DockWidgetClosable);
     dockProperty->setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
     dockProperty->setMinimumWidth(150);
     addDockWidget(Qt::RightDockWidgetArea, dockProperty);
 
     QDockWidget *dockPage = new QDockWidget(tr("Page"), this);
-    dockPage->setFeatures(QDockWidget::DockWidgetMovable);
+    dockPage->setFeatures(QDockWidget::DockWidgetMovable | QDockWidget::DockWidgetFloatable | QDockWidget::DockWidgetClosable);
     dockPage->setAllowedAreas(Qt::BottomDockWidgetArea);
     dockPage->setMinimumHeight(90);
     addDockWidget(Qt::BottomDockWidgetArea, dockPage);
 
     QDockWidget *dockConsole = new QDockWidget(tr("Console"), this);
-    dockConsole->setFeatures(QDockWidget::DockWidgetMovable);
+    dockConsole->setFeatures(QDockWidget::DockWidgetMovable | QDockWidget::DockWidgetFloatable | QDockWidget::DockWidgetClosable);
     dockConsole->setAllowedAreas(Qt::BottomDockWidgetArea);
     dockPage->setMinimumHeight(90);
     addDockWidget(Qt::BottomDockWidgetArea, dockConsole);

@@ -29,12 +29,14 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
     toolbox/toolbox.cpp \
-    qt_mouse_hover/qhoverbutton.cpp
+    qt_mouse_hover/qhoverbutton.cpp \
+    qt_image_toggle_button/qimagetogglebutton.cpp
 
 HEADERS += \
         mainwindow.h \
     toolbox/toolbox.h \
-    qt_mouse_hover/qhoverbutton.h
+    qt_mouse_hover/qhoverbutton.h \
+    qt_image_toggle_button/qimagetogglebutton.h
 
 FORMS += \
     toolbox/toolbox.ui

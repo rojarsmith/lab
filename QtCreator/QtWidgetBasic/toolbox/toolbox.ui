@@ -40,7 +40,19 @@
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_2">
+        <widget class="QImageToggleButton" name="pushButton_2">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>38</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>38</height>
+          </size>
+         </property>
          <property name="text">
           <string>PushButton</string>
          </property>
@@ -84,6 +96,11 @@
    <class>QHoverButton</class>
    <extends>QPushButton</extends>
    <header>qt_mouse_hover/qhoverbutton.h</header>
+  </customwidget>
+  <customwidget>
+   <class>QImageToggleButton</class>
+   <extends>QPushButton</extends>
+   <header>qt_image_toggle_button/qimagetogglebutton.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

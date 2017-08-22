@@ -3,5 +3,6 @@
         <file>images/save.png</file>
         <file>images/new.png</file>
         <file>images/add_element.png</file>
+        <file>images/add_element_36x36.png</file>
     </qresource>
 </RCC>
