@@ -1,9 +1,12 @@
-#include "qimagetogglebutton.h"
+#include "qgroupimagetogglebutton.h"
 
-QImageToggleButton::QImageToggleButton(QWidget *parent)
+QGroupImageToggleButton::QGroupImageToggleButton(QWidget *parent)
     : QPushButton(parent),
-      m_parentWidget(parent)
+      m_parentWidget(parent),
+      m_isHide(false)
 {
+    m_Buttons = new QHash<QString, QPushButton *>();
+
     this->setCheckable(true);
     this->setLocale(QLocale(QLocale::Chinese, QLocale::Taiwan));
     this->setStyleSheet(
@@ -20,25 +23,27 @@ QImageToggleButton::QImageToggleButton(QWidget *parent)
                 "}"
 
                 "QPushButton[PushDown=true]{"
-                "background-color: rgb(167, 205, 255);"
+                "qproperty-icon: url(://images/group_triangle_collapse.png);"
+                "background-color: transparent;"
                 "border-style: solid;"
-                "border-width: 1px; border-color: green;"
+                "border-width: 1px; border-color: transparent;"
                 "}"
 
                 "QPushButton[PushDown=false]{"
+                "qproperty-icon: url(://images/group_triangle_extend.png);"
                 "background-color: transparent;"
                 "border-style: solid;"
                 "border-width: 1px; border-color: transparent;"
                 "}"
 
                 "QPushButton {"
-                "qproperty-icon: url(://images/add_element_36x36.png);"
+                "qproperty-icon: url(://images/group_triangle_extend.png);"
                 ////"background-image: url(://images/add_element_36x36.png);"
                 "background-color: transparent;"
                 "border-style: solid;"
                 "border-width: 1px;"
                 "border-color: transparent;"
-                "padding-left: 10px;"
+                "padding-left: 2px;"
                 "text-align: left;"
                 "padding-right: 20px;"
                 "background-position: center left;"
@@ -50,8 +55,13 @@ QImageToggleButton::QImageToggleButton(QWidget *parent)
     connect(this, SIGNAL(clicked()), this, SLOT(buttonClicked()));
 }
 
-void QImageToggleButton::buttonClicked()
-{    
+QGroupImageToggleButton::~QGroupImageToggleButton()
+{
+    if(m_Buttons) delete m_Buttons;
+}
+
+void QGroupImageToggleButton::buttonClicked()
+{
     if(this->isChecked()){
         this->setProperty("PushDown", true);
         this->style()->unpolish(this);
@@ -61,6 +71,32 @@ void QImageToggleButton::buttonClicked()
         this->style()->unpolish(this);
         this->style()->polish(this);
     }
+}
 
-    QMessageBox::information(m_parentWidget, "Toggled!", QString("The button is %1!").arg(this->isChecked()?"pressed":"released") );
+void QGroupImageToggleButton::addButton(QPushButton *button)
+{
+    m_Buttons->insert(button->objectName(), button);
+}
+
+void QGroupImageToggleButton::hideGroup(bool value)
+{
+    QHashIterator<QString, QPushButton *> i(*m_Buttons);
+    if(value){
+        while (i.hasNext()) {
+            i.next();
+            i.value()->hide();
+        }
+        m_isHide = true;
+    }else{
+        while (i.hasNext()) {
+            i.next();
+            i.value()->setVisible(true);
+        }
+        m_isHide = false;
+    }
+}
+
+bool QGroupImageToggleButton::isGroupHidden()
+{
+    return m_isHide;
 }

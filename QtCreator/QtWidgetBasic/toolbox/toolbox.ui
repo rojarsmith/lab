@@ -28,7 +28,7 @@
         <x>0</x>
         <y>0</y>
         <width>137</width>
-        <height>272</height>
+        <height>274</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -59,7 +59,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_3">
+        <widget class="QGroupImageToggleButton" name="pushButton_3">
          <property name="text">
           <string>Group1</string>
          </property>
@@ -139,6 +139,11 @@
    <class>QImageToggleButton</class>
    <extends>QPushButton</extends>
    <header>qt_image_toggle_button/qimagetogglebutton.h</header>
+  </customwidget>
+  <customwidget>
+   <class>QGroupImageToggleButton</class>
+   <extends>QPushButton</extends>
+   <header>qt_group_image_toggle_button/qgroupimagetogglebutton.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

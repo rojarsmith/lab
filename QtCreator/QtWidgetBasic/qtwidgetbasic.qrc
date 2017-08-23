@@ -4,5 +4,7 @@
         <file>images/new.png</file>
         <file>images/add_element.png</file>
         <file>images/add_element_36x36.png</file>
+        <file>images/group_triangle_collapse.png</file>
+        <file>images/group_triangle_extend.png</file>
     </qresource>
 </RCC>

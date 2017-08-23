@@ -8,7 +8,9 @@ ToolBox::ToolBox(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    //ui->pushButton_3
+    ui->pushButton_3->addButton(ui->pushButton_4);
+    ui->pushButton_3->addButton(ui->pushButton_5);
+    ui->pushButton_3->addButton(ui->pushButton_6);
     connect(ui->pushButton_3, SIGNAL(clicked()), this, SLOT(handleButton()));
 }
 
@@ -19,11 +21,9 @@ ToolBox::~ToolBox()
 
 void ToolBox::handleButton()
 {
-    if(!ui->pushButton_4->isHidden()){
-        ui->pushButton_4->hide();
+    if(!ui->pushButton_3->isGroupHidden()){
+        ui->pushButton_3->hideGroup(true);
     }else{
-        ui->pushButton_4->setVisible(true);
+        ui->pushButton_3->hideGroup(false);
     }
-
-    //ui->verticalLayout_3->addWidget(new QWidget());
 }
