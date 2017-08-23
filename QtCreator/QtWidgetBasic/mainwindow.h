@@ -3,13 +3,12 @@
 
 #include <QMainWindow>
 
-QT_BEGIN_NAMESPACE
 class QAction;
 class QMenu;
 class QGraphicsView;
 class QGraphicsScene;
-QT_END_NAMESPACE
 
+class MdiEditor;
 class ToolBox;
 
 class MainWindow : public QMainWindow
@@ -23,6 +22,7 @@ private:
     void createActions();
 
     ToolBox *m_wgtToolBox;
+    MdiEditor *m_wgtMdiEditor;
 
     QGraphicsView *graphicsView;
     QGraphicsScene *graphicsScene;

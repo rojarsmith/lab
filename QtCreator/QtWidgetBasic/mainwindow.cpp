@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "toolbox/toolbox.h"
+#include "mdieditor/mdieditor.h"
 #include <QtWidgets>
 #include <QGraphicsScene>
 
@@ -10,13 +11,17 @@
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     m_wgtToolBox(new ToolBox),
+    m_wgtMdiEditor(new MdiEditor),
     graphicsView(new QGraphicsView),
     graphicsScene(new QGraphicsScene)
 {
     setWindowTitle(tr("Macaca"));
     resize(160*6, 90*6);
-    graphicsView->setScene(graphicsScene);
-    setCentralWidget(graphicsView);
+
+
+    setCentralWidget(m_wgtMdiEditor);
+    //graphicsView->setScene(graphicsScene);
+    //setCentralWidget(graphicsView);
 
     QDockWidget *dockProjectManager = new QDockWidget(tr("ProjectManager"), this);
     dockProjectManager->setFeatures(QDockWidget::DockWidgetMovable | QDockWidget::DockWidgetFloatable | QDockWidget::DockWidgetClosable);

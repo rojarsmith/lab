@@ -29,7 +29,8 @@ SOURCES += \
     qt_mouse_hover/qhoverbutton.cpp \
     qt_image_toggle_button/qimagetogglebutton.cpp \
     qt_group_image_toggle_button/qgroupimagetogglebutton.cpp \
-    qt_filter_line_edit/filterlineedit.cpp
+    qt_filter_line_edit/filterlineedit.cpp \
+    mdieditor/mdieditor.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -37,10 +38,12 @@ HEADERS += \
     qt_mouse_hover/qhoverbutton.h \
     qt_image_toggle_button/qimagetogglebutton.h \
     qt_group_image_toggle_button/qgroupimagetogglebutton.h \
-    qt_filter_line_edit/filterlineedit.h
+    qt_filter_line_edit/filterlineedit.h \
+    mdieditor/mdieditor.h
 
 FORMS += \
-    toolbox/toolbox.ui
+    toolbox/toolbox.ui \
+    mdieditor/mdieditor.ui
 
 RESOURCES += \
     qtwidgetbasic.qrc
