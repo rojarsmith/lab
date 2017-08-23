@@ -28,17 +28,22 @@ SOURCES += \
     toolbox/toolbox.cpp \
     qt_mouse_hover/qhoverbutton.cpp \
     qt_image_toggle_button/qimagetogglebutton.cpp \
-    qt_group_image_toggle_button/qgroupimagetogglebutton.cpp
+    qt_group_image_toggle_button/qgroupimagetogglebutton.cpp \
+    qt_filter_line_edit/filterlineedit.cpp
 
 HEADERS += \
         mainwindow.h \
     toolbox/toolbox.h \
     qt_mouse_hover/qhoverbutton.h \
     qt_image_toggle_button/qimagetogglebutton.h \
-    qt_group_image_toggle_button/qgroupimagetogglebutton.h
+    qt_group_image_toggle_button/qgroupimagetogglebutton.h \
+    qt_filter_line_edit/filterlineedit.h
 
 FORMS += \
     toolbox/toolbox.ui
 
 RESOURCES += \
     qtwidgetbasic.qrc
+
+DISTFILES += \
+    beautifier.astylerc

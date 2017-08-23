@@ -64,3 +64,14 @@ void QImageToggleButton::buttonClicked()
 
     QMessageBox::information(m_parentWidget, "Toggled!", QString("The button is %1!").arg(this->isChecked()?"pressed":"released") );
 }
+
+void QImageToggleButton::buttonUnClicked()
+{
+    if(this->isChecked())
+    {
+        this->setChecked(false);
+        this->setProperty("PushDown", false);
+        this->style()->unpolish(this);
+        this->style()->polish(this);
+    }
+}

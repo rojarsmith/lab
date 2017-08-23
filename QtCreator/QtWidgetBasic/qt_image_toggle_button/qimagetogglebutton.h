@@ -9,6 +9,7 @@ class QImageToggleButton : public QPushButton
 public:
     explicit QImageToggleButton(QWidget *parent = 0);
     QWidget *m_parentWidget;
+    void buttonUnClicked();
 public slots:
     void buttonClicked();
 private :

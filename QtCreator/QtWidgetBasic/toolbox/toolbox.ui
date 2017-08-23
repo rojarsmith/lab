@@ -15,7 +15,7 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <widget class="QLineEdit" name="lineEdit"/>
+    <widget class="FilterLineEdit" name="lineEdit"/>
    </item>
    <item>
     <widget class="QScrollArea" name="scrollArea">
@@ -26,9 +26,9 @@
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>0</y>
-        <width>137</width>
-        <height>274</height>
+        <y>-72</y>
+        <width>120</width>
+        <height>350</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -97,6 +97,37 @@
         </layout>
        </item>
        <item>
+        <widget class="QGroupImageToggleButton" name="pushButton_7">
+         <property name="text">
+          <string>Group2</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_4">
+         <property name="topMargin">
+          <number>5</number>
+         </property>
+         <property name="bottomMargin">
+          <number>5</number>
+         </property>
+         <item>
+          <widget class="QImageToggleButton" name="pushButton_8">
+           <property name="text">
+            <string>PushButton</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QImageToggleButton" name="pushButton_9">
+           <property name="text">
+            <string>PushButton</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
         <widget class="QLabel" name="label_4">
          <property name="text">
           <string>TextLabel</string>
@@ -144,6 +175,11 @@
    <class>QGroupImageToggleButton</class>
    <extends>QPushButton</extends>
    <header>qt_group_image_toggle_button/qgroupimagetogglebutton.h</header>
+  </customwidget>
+  <customwidget>
+   <class>FilterLineEdit</class>
+   <extends>QLineEdit</extends>
+   <header>qt_filter_line_edit/filterlineedit.h</header>
   </customwidget>
  </customwidgets>
  <resources/>
