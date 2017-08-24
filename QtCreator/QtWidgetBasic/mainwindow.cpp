@@ -11,17 +11,12 @@
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     m_wgtToolBox(new ToolBox),
-    m_wgtMdiEditor(new MdiEditor),
-    graphicsView(new QGraphicsView),
-    graphicsScene(new QGraphicsScene)
+    m_wgtMdiEditor(new MdiEditor)
 {
     setWindowTitle(tr("Macaca"));
     resize(160*6, 90*6);
 
-
     setCentralWidget(m_wgtMdiEditor);
-    //graphicsView->setScene(graphicsScene);
-    //setCentralWidget(graphicsView);
 
     QDockWidget *dockProjectManager = new QDockWidget(tr("ProjectManager"), this);
     dockProjectManager->setFeatures(QDockWidget::DockWidgetMovable | QDockWidget::DockWidgetFloatable | QDockWidget::DockWidgetClosable);

@@ -24,8 +24,8 @@ private:
     ToolBox *m_wgtToolBox;
     MdiEditor *m_wgtMdiEditor;
 
-    QGraphicsView *graphicsView;
-    QGraphicsScene *graphicsScene;
+    //QGraphicsView *graphicsView;
+    //QGraphicsScene *graphicsScene;
     //QListWidget *customerList;
     //QListWidget *paragraphsList;
     QMenu *viewMenu;

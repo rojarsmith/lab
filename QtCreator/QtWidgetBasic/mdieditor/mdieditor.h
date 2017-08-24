@@ -7,6 +7,8 @@ namespace Ui {
 class MdiEditor;
 }
 
+class QGraphicsScene;
+
 class MdiEditor : public QWidget
 {
     Q_OBJECT
@@ -17,6 +19,8 @@ public:
 
 private:
     Ui::MdiEditor *ui;
+
+    QGraphicsScene *m_GraphicsScene1;
 };
 
 #endif // MDIEDITOR_H

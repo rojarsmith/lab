@@ -171,10 +171,29 @@
        </item>
       </layout>
      </widget>
+     <widget class="PaintFrame" name="subwindow_3">
+      <property name="minimumSize">
+       <size>
+        <width>100</width>
+        <height>100</height>
+       </size>
+      </property>
+      <property name="windowTitle">
+       <string>Subwindow</string>
+      </property>
+     </widget>
     </widget>
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>PaintFrame</class>
+   <extends>QWidget</extends>
+   <header>mdieditor/paintframe.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

@@ -30,7 +30,10 @@ SOURCES += \
     qt_image_toggle_button/qimagetogglebutton.cpp \
     qt_group_image_toggle_button/qgroupimagetogglebutton.cpp \
     qt_filter_line_edit/filterlineedit.cpp \
-    mdieditor/mdieditor.cpp
+    mdieditor/mdieditor.cpp \
+    mdieditor/editorscene.cpp \
+    mdieditor/paintframe.cpp \
+    mdieditor/paintscene.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -39,7 +42,10 @@ HEADERS += \
     qt_image_toggle_button/qimagetogglebutton.h \
     qt_group_image_toggle_button/qgroupimagetogglebutton.h \
     qt_filter_line_edit/filterlineedit.h \
-    mdieditor/mdieditor.h
+    mdieditor/mdieditor.h \
+    mdieditor/editorscene.h \
+    mdieditor/paintframe.h \
+    mdieditor/paintscene.h
 
 FORMS += \
     toolbox/toolbox.ui \
