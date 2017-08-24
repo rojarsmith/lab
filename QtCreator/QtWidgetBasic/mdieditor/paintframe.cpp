@@ -3,34 +3,36 @@
 
 #include <QTimer>
 #include <QGraphicsView>
+#include <QGridLayout>
 
 PaintFrame::PaintFrame(QWidget *parent) :
-    QWidget(parent),
-    m_QGraphicsView(new QGraphicsView)
-    //,ui(new Ui::Paint)
+    QWidget(parent)
 {
-//    ui->setupUi(this);
-    this->
+    setMinimumSize(QSize(100, 100));
+    m_gridLayout = new QGridLayout(this);
+    m_graphicsView = new QGraphicsView(this);
 
-    scene = new PaintScene();  //初始化圖形場景
+    scene = new PaintScene();  // Init graphics scene
+    m_graphicsView->setScene(scene);  // Set graphics scene
 
-//    ui->graphicsView->setScene(scene);  //設置場景圖形
+    m_gridLayout->addWidget(m_graphicsView, 0, 0, 1, 1);
 
-    timer = new QTimer();       //定時器初始化
-//    connect(timer, &QTimer::timeout, this, &Paint::slotTimer);
-    timer->start(16);          //啟動定時器
+    timer = new QTimer();       // Init Timer
+    connect(timer, &QTimer::timeout, this, &PaintFrame::slotTimer);
+    timer->start(16);          // Run Timer
 }
 
 PaintFrame::~PaintFrame()
 {
-    //delete ui;
+    if(scene) delete scene;
 }
 
 void PaintFrame::slotTimer()
 {
-    /* 重新定義圖形場景的尺寸，根據窗口的大小 */
+    /* Recalculate the size of the graphic scenes, depending on the size of the window
+     * */
     timer->stop();
-    //scene->setSceneRect(0,0, this->graphicsView->width() - 20, ui->graphicsView->height() - 20);
+    scene->setSceneRect(0,0, this->m_graphicsView->width() - 20, this->m_graphicsView->height() - 20);
 }
 
 void PaintFrame::resizeEvent(QResizeEvent *event)

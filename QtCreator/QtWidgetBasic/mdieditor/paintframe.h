@@ -4,6 +4,7 @@
 #include <QWidget>
 
 class QTimer;
+class QGridLayout;
 class QGraphicsView;
 class PaintScene;
 
@@ -14,12 +15,12 @@ public:
     PaintFrame(QWidget *parent = 0);
     ~PaintFrame();
 private:
-    QTimer *timer; //定義一個定時器 的 實際尺寸 的 準備 圖形場景
-    QGraphicsView *m_QGraphicsView;
-    PaintScene *scene;  // 宣告自定義圖形場景
-
+    QTimer *timer; // Define the timer for the preparation of the actual size of the graphic scenes
+    PaintScene *scene;  // We declare a custom graphic scene
+    QGridLayout *m_gridLayout;
+    QGraphicsView *m_graphicsView;
 private:
-    /* 覆蓋resize事件重新計算圖形場景的大小
+    /* Override event resize the window to recalculate the size of the graphic scenes
      * */
     void resizeEvent(QResizeEvent * event);
 
