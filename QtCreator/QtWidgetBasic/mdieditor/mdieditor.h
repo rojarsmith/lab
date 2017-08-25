@@ -8,6 +8,7 @@ class MdiEditor;
 }
 
 class QGraphicsScene;
+class EditorScene;
 
 class MdiEditor : public QWidget
 {
@@ -21,6 +22,7 @@ private:
     Ui::MdiEditor *ui;
 
     QGraphicsScene *m_GraphicsScene1;
+    EditorScene *m_EditorScene;
 };
 
 #endif // MDIEDITOR_H

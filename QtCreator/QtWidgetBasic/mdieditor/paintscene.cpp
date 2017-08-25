@@ -13,7 +13,7 @@ PaintScene::~PaintScene()
 }
 
 void PaintScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
-{
+{    
     // When you press the mouse button, draw the ellipse
     addEllipse(event->scenePos().x() - 5,
                event->scenePos().y() - 5,
