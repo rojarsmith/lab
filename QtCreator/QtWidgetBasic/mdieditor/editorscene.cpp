@@ -23,6 +23,9 @@ EditorScene::~EditorScene()
 
 void EditorScene::mousePressEvent(QGraphicsSceneMouseEvent * event)
 {
+    if (event->button() != Qt::LeftButton)
+        return;
+
     downPt = event->scenePos();
 
     if (!event->isAccepted()){
