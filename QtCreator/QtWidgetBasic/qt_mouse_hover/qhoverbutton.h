@@ -9,6 +9,12 @@ class QHoverButton : public QPushButton
 public:
     explicit QHoverButton(QWidget *parent = 0);
 
+signals:
+    void emitData1(int data);
+
+public slots:
+    virtual void clickedButton();
+
 protected:
     bool isUnderline;
     virtual void hoverEnter(QHoverEvent *event);

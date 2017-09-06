@@ -16,6 +16,8 @@ public:
 private slots:
    void handleButton();
    void handleElementClicked();
+   void onElementClicked1(int i);
+
 private:
     Ui::ToolBox *ui;
 };

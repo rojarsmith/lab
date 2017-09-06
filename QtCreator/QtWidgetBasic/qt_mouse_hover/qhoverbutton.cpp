@@ -6,6 +6,8 @@ QHoverButton::QHoverButton(QWidget *parent)
 {
     setMouseTracking(true);
     setAttribute(Qt::WA_Hover);
+
+    connect(this,SIGNAL(pressed()), this, SLOT(clickedButton()));
 }
 
 bool QHoverButton::event(QEvent *event)
@@ -59,4 +61,9 @@ void QHoverButton::hoverMove(QHoverEvent *)
     }
     this->setFont(font);
     //repaint();
+}
+
+void QHoverButton::clickedButton()
+{
+    emit emitData1(999);
 }
