@@ -5,6 +5,7 @@
 #include "elementabstraction.h"
 #include "elementsetbutton.h"
 
+#include <QDebug>
 #include <QGraphicsSimpleTextItem>
 #include <QHash>
 
@@ -44,7 +45,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     /* QGraphicsRectItem reflaction */
     ObjectFactory::registerClass<ElementSetButton>();
-    ElementSetButton *object1 = (ElementSetButton*)ObjectFactory::createObject("ElementSetButton");
+    ElementSetButton *object1 = (ElementSetButton*)ObjectFactory::createObject("ElementSetButton", scene_);
     QPen pen3 = object1->pen();
     pen3.setWidth(5);
     pen3.setColor(Qt::white);
@@ -58,6 +59,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
 
     QObject *object2 = (ElementSetButton*)ObjectFactory::createObject("ElementSetButton");
+    int pc = object2->metaObject()->propertyCount();
 
     /* QGraphicsRectItem */
     QGraphicsRectItem  *item2 = new QGraphicsRectItem();
