@@ -9,10 +9,12 @@ import lab.pojo.definition.Person;
 
 @Component
 public class BussinessPerson implements Person {
-
-	@Autowired(required = false)
-	@Qualifier("dog")
+	
 	private Animal animal = null;
+	
+	public BussinessPerson(@Autowired @Qualifier("dog") Animal animal) {
+		this.animal = animal;
+	}
 	
 	@Override
 	public void service() {
