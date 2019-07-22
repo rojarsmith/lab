@@ -12,7 +12,8 @@ import lab.pojo.User;
 @Configuration
 @ComponentScan(
 		basePackages = "lab.*",
-		excludeFilters = {@Filter(classes = {Service.class})}
+		excludeFilters = {@Filter(classes = {Service.class})},
+		lazyInit = true
 		)
 public class AppConfig {
 //	@Bean(name = "user")

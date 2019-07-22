@@ -12,11 +12,12 @@ public class IoCTest {
 	private static Logger log = Logger.getLogger(IoCTest.class);
 
 	public static void main(String[] args) {
-		ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
+		AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
 		User user = ctx.getBean(User.class);
-		log.info(user.getId());
+		log.info(user.getId());		
 		
 		Person person = ctx.getBean(BussinessPerson.class);
 		person.service();
+		ctx.close();
 	}
 }
