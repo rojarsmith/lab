@@ -5,6 +5,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import lab.pojo.BussinessPerson;
+import lab.pojo.DataBaseProperties;
 import lab.pojo.User;
 import lab.pojo.definition.Person;
 
@@ -16,8 +17,11 @@ public class IoCTest {
 		User user = ctx.getBean(User.class);
 		log.info(user.getId());		
 		
+		DataBaseProperties db = ctx.getBean(DataBaseProperties.class);
+		
+		
 		Person person = ctx.getBean(BussinessPerson.class);
 		person.service();
-		ctx.close();
+		ctx.close();		
 	}
 }
