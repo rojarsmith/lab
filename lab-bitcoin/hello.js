@@ -95,9 +95,8 @@ rp(options).then(function (response) {
         password: 'your_password',
         network: 'testnet'
     });
-    client.sendRawTransaction(signedTransaction, (error, response) => {
-        if (error) console.log(error);
-        console.log(response);
+    client.sendRawTransaction(signedTransaction).then((response) => {
+        console.log(response); // Response txID.
     });
 
     /// RPC, not work. :(
