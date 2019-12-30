@@ -4,6 +4,7 @@
   "description": "",
   "main": "hello.js",
   "dependencies": {
+    "bitcoin-core": "^3.0.0",
     "bitcoinjs-lib": "^5.1.6",
     "request": "^2.88.0",
     "request-promise": "^4.2.5"
