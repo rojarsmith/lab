@@ -1,15 +1,22 @@
 /// Build custom script.
-/// Not work....
+/// Worked :)
 
 var bitcore = require('bitcore-lib');
 
-var Taddress = '2NAx1fVt99EaztmkasGk6NXd4wDWEnd5VbP'; //Destination address
-var pkey = 'cQ2gMoiDDyVFtcQCA2pJJikfEV9aauvhrcehH5Ns6VakiVs4SwVp'; //UTXOs private key
+var Taddress = 'mrbBqiKUKxPdwk8dRESWJkQXPENR63TLtZ'; //Destination address
+var pkey = 'cPQmMMNZRB2xyLrADDwRfvvVkGnNLyu2w6awa9qQQtR8xiokFpLh'; //UTXOs private key
+var txid = 'b80586d2bcb0b03b18880fb8160b6c62bc83f53bb105cea42706d2e28167e9a4';
 
 var unlockingScript = bitcore.Script().add('OP_2');
 var transaction = new bitcore.Transaction();
-transaction.addInput(new bitcore.Transaction.Input({prevTxId:'c6758cf22346d3d8b7b6042b7701a5f07d140732bf5b93e1fb92ed250e5b6d20', outputIndex: 1, script: unlockingScript }), unlockingScript, 10000);
-transaction = transaction.to(Taddress, 90000000);
-transaction = transaction.fee(0.0001*100000000);
+transaction.addInput(new bitcore.Transaction.Input({
+    prevTxId: txid,
+    outputIndex: 1,
+    script: unlockingScript
+}),
+    unlockingScript,
+    999900000);                                    
+transaction = transaction.to(Taddress, 999800000);
+transaction = transaction.fee(0.0001 * 100000000);
 
-console.log(transaction);
+console.log("Raw Transaction\n"+transaction);
