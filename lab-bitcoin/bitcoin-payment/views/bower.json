@@ -1,0 +1,20 @@
+{
+  "name": "views",
+  "homepage": "https://github.com/rojarsmith/Lab",
+  "authors": [
+    "Rojar Smith <rojarsmith@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {    
+    "bitcore-lib": "^0.16.0"
+  }
+}
