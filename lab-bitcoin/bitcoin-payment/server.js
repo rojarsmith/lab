@@ -163,7 +163,8 @@ app.post("/payment", rawBodyParser, function (req, res) {
 
     // Sending to the client a payment acknowledgment message with a receipt ID.
 
-    var ack = new PaymentProtocol().makePaymentACK(); ack.set('payment', payment.message); ack.set('memo', 'Payment processed,Thank you ;) \n invoice ID :' + req.query.id); //store invoice details in database
+    var ack = new PaymentProtocol().makePaymentACK(); 
+    ack.set('payment', payment.message); ack.set('memo', 'Payment processed,Thank you ;) \n invoice ID :' + req.query.id); //store invoice details in database
     var rawack = ack.serialize(); res.set({
         'Content-Type': PaymentProtocol.PAYMENT_ACK_CONTENT_TYPE,
         'Content-Length': rawack.length,
