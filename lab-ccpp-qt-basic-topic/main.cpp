@@ -5,6 +5,7 @@
 #include <vector>
 #include <mutex>
 #include <deque>
+#include <rwlock.h>
 
 using namespace std;
 
@@ -12,8 +13,8 @@ struct QueueBuffer {
     deque<int> deq;
     int capacity;
     mutex lock;
-    condition_variable not_full;
-    condition_variable not_empty;
+    condition_variable not_full; //producer thread.
+    condition_variable not_empty; //consumer thread.
     QueueBuffer(int capacity) : capacity(capacity){}
     void deposit(int data){
         unique_lock<mutex> lk(lock);
@@ -53,9 +54,46 @@ void producer(int id, QueueBuffer& buffer){
     }
 }
 
+int result = 0;
+
+void func(RWLock &rw, int i){
+    if(i % 2 == 0){
+        rw.WriteLock();
+        result += 1;
+        rw.WriteUnlock();
+        rw.ReadLock();
+        rw.ReadUnlock();
+    }else{
+        rw.ReadLock();
+        rw.ReadUnlock();
+        rw.WriteLock();
+        result += 2;
+        rw.WriteUnlock();
+    }
+}
+
+void not_safe(int i){
+    if(i%2 == 0){
+        result += 1;
+    }else{
+        result += 2;
+    }
+}
+
 int main(int argc, char *argv[])
-{
-    QCoreApplication a(argc, argv);
+{    
+    RWLock rw;
+    std::vector<std::thread> threads;
+    for(int i = 0; i < 1000; i++){
+        //threads.push_back(std::thread(func, ref(rw), i));
+        threads.push_back(std::thread(not_safe, i));
+    }
+    for(int i = 0; i < threads.size() ; i++)
+    {
+        threads[i].join();
+    }
+    cout << result << endl;
+
 
     QueueBuffer buffer(4);
 
@@ -71,5 +109,5 @@ int main(int argc, char *argv[])
     p1.join();
     p2.join();
 
-    return a.exec();
+    return 0;
 }

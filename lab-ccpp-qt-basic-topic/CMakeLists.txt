@@ -13,5 +13,5 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(Qt5Core)
 
-add_executable(lab-ccpp-qt-basic-topic main.cpp)
+add_executable(lab-ccpp-qt-basic-topic main.cpp rwlock.cpp)
 target_link_libraries(lab-ccpp-qt-basic-topic Qt5::Core)
