@@ -28,3 +28,4 @@
 #QtCreator
 QtCreator/**/*.pro.user
 QtCreator/build-**
+/lab-ccpp-qt-basic-topic/CMakeLists.txt.user

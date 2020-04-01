@@ -5,6 +5,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.ComponentScan.Filter;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.FilterType;
+import org.springframework.context.annotation.ImportResource;
 import org.springframework.stereotype.Service;
 
 import lab.pojo.User;
@@ -15,6 +16,7 @@ import lab.pojo.User;
 		excludeFilters = {@Filter(classes = {Service.class})},
 		lazyInit = true
 		)
+@ImportResource(value= {"classpath:spring-other.xml"})
 public class AppConfig {
 //	@Bean(name = "user")
 //	public User initUser() {

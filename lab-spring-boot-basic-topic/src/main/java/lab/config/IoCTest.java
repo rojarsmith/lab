@@ -4,10 +4,12 @@ import org.jboss.logging.Logger;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import lab.other.pojo.Squirrel;
 import lab.pojo.BussinessPerson;
 import lab.pojo.DataBaseProperties;
 import lab.pojo.User;
 import lab.pojo.definition.Person;
+import lab.scope.pojo.ScopeBean;
 
 public class IoCTest {
 	private static Logger log = Logger.getLogger(IoCTest.class);
@@ -18,10 +20,17 @@ public class IoCTest {
 		log.info(user.getId());		
 		
 		DataBaseProperties db = ctx.getBean(DataBaseProperties.class);
-		
-		
+				
 		Person person = ctx.getBean(BussinessPerson.class);
 		person.service();
+		
+		ScopeBean scopeBean1 = ctx.getBean(ScopeBean.class);
+		ScopeBean scopeBean2 = ctx.getBean(ScopeBean.class);
+		System.out.println(scopeBean1 == scopeBean2);
+		
+		Squirrel scopeBean3 = ctx.getBean(Squirrel.class);
+		scopeBean3.use();
+		
 		ctx.close();		
 	}
 }
