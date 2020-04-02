@@ -1,0 +1,17 @@
+{
+  "name": "basic",
+  "description": "Try nodejs.",
+  "main": "index.js",
+  "authors": [
+    "Rojar Smith <rojarsmith@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/rojarsmith/Lab",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
