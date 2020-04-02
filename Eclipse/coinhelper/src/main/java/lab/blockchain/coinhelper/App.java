@@ -54,11 +54,11 @@ public class App {
 	}
 
 	public static void digitslate_total_supply() {
-		long halve = 87600 / 12;
+		long halve = 87600;
 		long satoshi = 100000000;
 
 		long total = 0;
-		long reward = 50 * satoshi * 16;
+		long reward = 50 * satoshi;
 		int halve_count = 0;
 		
 		do {
@@ -66,8 +66,20 @@ public class App {
 			for (int i = 0; i < halve; i++) {
 				total += reward;
 			}
-			// reward3 /= ((long)Math.Pow( 2 , 1));
-			reward /= 2;
+			
+			
+//			double ap = 1.1;
+//			for(int i = 0;i < halve_count; i++)
+//			{
+//				ap *= 1.1; 
+//			}
+//	
+//			reward /= (int)(2 * ap);
+			
+			reward -= (reward * 0.2); 
+			
+			//reward /= (2 *(Math.pow(1.1, halve_count)));
+			//reward /= 2;
 			if (reward == 0) {
 			}
 		} while (reward != 0);

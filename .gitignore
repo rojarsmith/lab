@@ -27,5 +27,5 @@
 
 #QtCreator
 QtCreator/**/*.pro.user
-QtCreator/build-**
+build-qt*
 /lab-ccpp-qt-basic-topic/CMakeLists.txt.user
