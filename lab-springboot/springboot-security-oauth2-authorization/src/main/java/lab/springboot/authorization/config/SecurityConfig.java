@@ -2,6 +2,7 @@ package lab.springboot.authorization.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -9,6 +10,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
+@EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter{
     /**
      * Must encrypt password in Spring 5.
@@ -47,8 +49,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
      * @return Certificate manager
      * @throws Exception Error info
      */
-    @Override
     @Bean
+    @Override
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
     }
