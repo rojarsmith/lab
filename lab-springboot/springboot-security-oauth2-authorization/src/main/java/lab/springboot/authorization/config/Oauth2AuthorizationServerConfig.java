@@ -25,7 +25,7 @@ public class Oauth2AuthorizationServerConfig extends AuthorizationServerConfigur
 	private @NonNull AuthenticationManager authenticationManager;
 
 	private @NonNull ClientDetails clientDetails;
-	
+
 	@Override
 	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
 //		InMemoryClientDetailsServiceBuilder builder = clients.inMemory();
@@ -59,42 +59,34 @@ public class Oauth2AuthorizationServerConfig extends AuthorizationServerConfigur
 //        .accessTokenValiditySeconds(Math.toIntExact(Duration.ofHours(1).getSeconds()))
 //        .refreshTokenValiditySeconds(Math.toIntExact(Duration.ofHours(1).getSeconds()))
 //        .redirectUris("http://example.com");
-        
-        configClient(clients);
+
+		configClient(clients);
 	}
 
-    private void configClient(ClientDetailsServiceConfigurer clients) throws Exception {
-        InMemoryClientDetailsServiceBuilder builder = clients.inMemory();
-        for (BaseClientDetails client : clientDetails.getClient()) {
-            ClientDetailsServiceBuilder<InMemoryClientDetailsServiceBuilder>.ClientBuilder clientBuilder =
-                    builder.withClient(client.getClientId());
-            clientBuilder
-                    .secret(client.getClientSecret())
-                    .resourceIds(client.getResourceIds().toArray(new String[0]))
-                    .authorizedGrantTypes(client.getAuthorizedGrantTypes().toArray(new String[0]))
-                    .authorities(
-                            AuthorityUtils.authorityListToSet(client.getAuthorities())
-                                    .toArray(new String[0]))
-                    .scopes(client.getScope().toArray(new String[0]));
-            if (client.getAutoApproveScopes() != null) {
-                clientBuilder.autoApprove(
-                        client.getAutoApproveScopes().toArray(new String[0]));
-            }
-            if (client.getAccessTokenValiditySeconds() != null) {
-                clientBuilder.accessTokenValiditySeconds(
-                        client.getAccessTokenValiditySeconds());
-            }
-            if (client.getRefreshTokenValiditySeconds() != null) {
-                clientBuilder.refreshTokenValiditySeconds(
-                        client.getRefreshTokenValiditySeconds());
-            }
-            if (client.getRegisteredRedirectUri() != null) {
-                clientBuilder.redirectUris(
-                        client.getRegisteredRedirectUri().toArray(new String[0]));
-            }
-        }
-    }
-	
+	private void configClient(ClientDetailsServiceConfigurer clients) throws Exception {
+		InMemoryClientDetailsServiceBuilder builder = clients.inMemory();
+		for (BaseClientDetails client : clientDetails.getClient()) {
+			ClientDetailsServiceBuilder<InMemoryClientDetailsServiceBuilder>.ClientBuilder clientBuilder = builder
+					.withClient(client.getClientId());
+			clientBuilder.secret(client.getClientSecret()).resourceIds(client.getResourceIds().toArray(new String[0]))
+					.authorizedGrantTypes(client.getAuthorizedGrantTypes().toArray(new String[0]))
+					.authorities(AuthorityUtils.authorityListToSet(client.getAuthorities()).toArray(new String[0]))
+					.scopes(client.getScope().toArray(new String[0]));
+			if (client.getAutoApproveScopes() != null) {
+				clientBuilder.autoApprove(client.getAutoApproveScopes().toArray(new String[0]));
+			}
+			if (client.getAccessTokenValiditySeconds() != null) {
+				clientBuilder.accessTokenValiditySeconds(client.getAccessTokenValiditySeconds());
+			}
+			if (client.getRefreshTokenValiditySeconds() != null) {
+				clientBuilder.refreshTokenValiditySeconds(client.getRefreshTokenValiditySeconds());
+			}
+			if (client.getRegisteredRedirectUri() != null) {
+				clientBuilder.redirectUris(client.getRegisteredRedirectUri().toArray(new String[0]));
+			}
+		}
+	}
+
 	@Override
 	public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
 		endpoints.authenticationManager(this.authenticationManager);
