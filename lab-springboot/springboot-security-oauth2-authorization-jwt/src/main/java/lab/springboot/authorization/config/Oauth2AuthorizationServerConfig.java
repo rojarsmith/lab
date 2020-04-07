@@ -1,17 +1,23 @@
 package lab.springboot.authorization.config;
 
 import java.time.Duration;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.oauth2.common.DefaultOAuth2AccessToken;
 import org.springframework.security.oauth2.config.annotation.builders.InMemoryClientDetailsServiceBuilder;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
+import org.springframework.security.oauth2.provider.token.TokenEnhancer;
+import org.springframework.security.oauth2.provider.token.TokenEnhancerChain;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
@@ -53,11 +59,34 @@ public class Oauth2AuthorizationServerConfig extends AuthorizationServerConfigur
 
 	@Override
 	public void configure(AuthorizationServerEndpointsConfigurer endpoints) {
-	    endpoints.authenticationManager(this.authenticationManager)
-	        .tokenStore(tokenStore())
-	        .accessTokenConverter(jwtAccessTokenConverter());
+//	    endpoints.authenticationManager(this.authenticationManager)
+//	        .tokenStore(tokenStore())
+//	        .accessTokenConverter(jwtAccessTokenConverter());
+		
+		TokenEnhancerChain tokenEnhancerChain = new TokenEnhancerChain();
+		tokenEnhancerChain.setTokenEnhancers(
+		    Arrays.asList(tokenEnhancer(), jwtAccessTokenConverter()));
+
+		endpoints.tokenStore(tokenStore())
+		    .tokenEnhancer(tokenEnhancerChain)
+		    .authenticationManager(authenticationManager);
 	}
 
+    /**
+     * Token Enhancer
+     *
+     * @return TokenEnhancer
+     */
+    @Bean
+    public TokenEnhancer tokenEnhancer() {
+        return (accessToken, authentication) -> {
+            Map<String, Object> additionalInfo = new HashMap<>(1);
+            additionalInfo.put("organization", authentication.getName());
+            ((DefaultOAuth2AccessToken) accessToken).setAdditionalInformation(additionalInfo);
+            return accessToken;
+        };
+    }	
+	
 	/**
 	 * 1. Token converter with asymmetric encryption
 	 *
