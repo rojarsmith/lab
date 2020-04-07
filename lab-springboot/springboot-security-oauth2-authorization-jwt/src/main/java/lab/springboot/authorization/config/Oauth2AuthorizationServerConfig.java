@@ -5,6 +5,7 @@ import java.time.Duration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.oauth2.config.annotation.builders.InMemoryClientDetailsServiceBuilder;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
@@ -14,6 +15,7 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
+import org.springframework.security.oauth2.provider.token.store.KeyStoreKeyFactory;
 
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
@@ -57,14 +59,17 @@ public class Oauth2AuthorizationServerConfig extends AuthorizationServerConfigur
 	}
 
 	/**
-	 * 1. Token converter with Symmetric-key
+	 * 1. Token converter with asymmetric encryption
 	 *
 	 * @return JwtAccessTokenConverter
 	 */
 	@Bean
 	public JwtAccessTokenConverter jwtAccessTokenConverter() {
 	    JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
-	    converter.setSigningKey("oauth2skey");
+	    //converter.setSigningKey("oauth2skey");
+	    KeyStoreKeyFactory keyStoreKeyFactory = new KeyStoreKeyFactory(
+	    		new ClassPathResource("oauth2.jks"), "oauth2".toCharArray());
+	    converter.setKeyPair(keyStoreKeyFactory.getKeyPair("oauth2"));
 	    return converter;
 	}
 
