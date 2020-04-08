@@ -11,8 +11,15 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
+
 @EnableWebSecurity
+@RequiredArgsConstructor
 public class SecurityConfig extends WebSecurityConfigurerAdapter{
+	
+	private @NonNull SecurityProperties securityProperties;
+	
     /**
      * Must encrypt password in Spring 5.
      *
@@ -22,7 +29,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-
+    
     /**
      * Create 3 user
      *
@@ -59,9 +66,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
     @Override
     protected void configure(HttpSecurity http) throws Exception {
     	http.formLogin()
-    	.loginPage("/login.html")
-    	.loginProcessingUrl("/authorization/form")
-    	.and()
-    	.csrf().disable();
+    	//.loginPage("/login.html")
+    	.loginPage("/oauth/login")
+    	//.loginProcessingUrl("/authorization/form")
+    	.loginProcessingUrl(securityProperties.getLoginProcessingUrl());
+    	//.and()
+    	//.csrf().disable();
     }
 }
