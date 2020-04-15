@@ -6,6 +6,12 @@ security:
    resource:
      token-info-uri: http://localhost:8000/oauth/check_token
      id: oauth2
+     jwt:
+       key-uri: http://localhost:8000/oauth/token_key
+       key-value: |
+         -----BEGIN PUBLIC KEY-----
+         MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAhzWK55efNvQU6hIpwHJEEgCXRwnsVCVo2uJeLnOnGN+EuIrfbAQDzZcYmQ0LZ9RRa+LMmTqH4M/s5iHrCUlxsd5hoOoFpPt/8yAZ4DlP0jD4vfJf8nycrwOJ7ejxsgeBYWvtVb9UDUsgcbAnYSgC23w/4YshAhzjMuQSg8IRN48jz6HAWwN/LPiSi8Rm76LFzJFzKdefQPceXBroFwTTtaubghkAVBIXf8or94McxuplMrZhEeiPsJ7FeBBOsSWalOI5Ui0J1E2sKBEyEa6zwhAa1lm6vlPbXiGbWK0Jv2l/5faksgMtW40KQmElO97pF8SJoDPcvfrTdHdjRnnfpQIDAQAB
+         -----END PUBLIC KEY-----
    client:
      access-token-uri: http://localhost:8000/oauth/token
      client-id: oauth2

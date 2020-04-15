@@ -8,6 +8,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.oauth2.common.DefaultOAuth2AccessToken;
 import org.springframework.security.oauth2.config.annotation.builders.InMemoryClientDetailsServiceBuilder;
@@ -21,9 +22,13 @@ import org.springframework.security.oauth2.provider.token.TokenEnhancerChain;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
+import org.springframework.security.oauth2.provider.token.store.KeyStoreKeyFactory;
 
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
+
+// Test URL:
+// localhost:8000/oauth/authorize?response_type=code&client_id=oauth2&redirect_uri=http://example.com&scope=all
 
 @Configuration
 @RequiredArgsConstructor
@@ -95,11 +100,11 @@ public class Oauth2AuthorizationServerConfig extends AuthorizationServerConfigur
 	public JwtAccessTokenConverter jwtAccessTokenConverter() {
 	    JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
 	    // Symmetric Encryption.
-	    converter.setSigningKey("oauth2");
+	    //converter.setSigningKey("oauth2");
 	    // Asymmetric Encryption.
-//	    KeyStoreKeyFactory keyStoreKeyFactory = new KeyStoreKeyFactory(
-//	    		new ClassPathResource("oauth2.jks"), "oauth2".toCharArray());
-//	    converter.setKeyPair(keyStoreKeyFactory.getKeyPair("oauth2"));
+	    KeyStoreKeyFactory keyStoreKeyFactory = new KeyStoreKeyFactory(
+	    		new ClassPathResource("oauth2.jks"), "oauth2".toCharArray());
+	    converter.setKeyPair(keyStoreKeyFactory.getKeyPair("oauth2"));
 	    return converter;
 	}
 
@@ -116,7 +121,9 @@ public class Oauth2AuthorizationServerConfig extends AuthorizationServerConfigur
 	@Override
 	public void configure(AuthorizationServerSecurityConfigurer security) {
 	    security
-	        .checkTokenAccess("isAuthenticated()");
+	        .checkTokenAccess("isAuthenticated()")
+	        // Can access public key.
+	        .tokenKeyAccess("isAuthenticated()");
 	}
 
 }
