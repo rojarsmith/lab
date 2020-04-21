@@ -16,6 +16,7 @@ import org.springframework.security.oauth2.config.annotation.configurers.ClientD
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
+import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.token.TokenEnhancer;
 import org.springframework.security.oauth2.provider.token.TokenEnhancerChain;
 import org.springframework.security.oauth2.provider.token.TokenStore;
@@ -25,6 +26,9 @@ import org.springframework.security.oauth2.provider.token.store.KeyStoreKeyFacto
 
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
+
+// Test URL:
+// localhost:8000/oauth/authorize?response_type=code&client_id=oauth2&redirect_uri=http://example.com&scope=all
 
 @Configuration
 @RequiredArgsConstructor
@@ -95,7 +99,9 @@ public class Oauth2AuthorizationServerConfig extends AuthorizationServerConfigur
 	@Bean
 	public JwtAccessTokenConverter jwtAccessTokenConverter() {
 	    JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
-	    //converter.setSigningKey("oauth2skey");
+	    // Symmetric Encryption.
+	    //converter.setSigningKey("oauth2");
+	    // Asymmetric Encryption.
 	    KeyStoreKeyFactory keyStoreKeyFactory = new KeyStoreKeyFactory(
 	    		new ClassPathResource("oauth2.jks"), "oauth2".toCharArray());
 	    converter.setKeyPair(keyStoreKeyFactory.getKeyPair("oauth2"));
@@ -112,5 +118,12 @@ public class Oauth2AuthorizationServerConfig extends AuthorizationServerConfigur
 	    return new JwtTokenStore(jwtAccessTokenConverter());
 	}
 
+	@Override
+	public void configure(AuthorizationServerSecurityConfigurer security) {
+	    security
+	        .checkTokenAccess("isAuthenticated()")
+	        // Can access public key.
+	        .tokenKeyAccess("isAuthenticated()");
+	}
 
 }
