@@ -9,7 +9,7 @@ public class HelloServiceImpl implements HelloService {
 		if(name == null || name.trim() == "") {
 			throw new RuntimeException("parameter is null!!");
 		}
-		System.out.print("hello " + name);		
+		System.out.println("hello " + name);		
 	}
 	
 }

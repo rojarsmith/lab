@@ -1,6 +1,9 @@
-package lab.interceptor;
+package lab.interceptor.impl;
 
 import java.lang.reflect.InvocationTargetException;
+
+import lab.interceptor.Interceptor;
+import lab.interceptor.Invocation;
 
 public class MyInterceptor implements Interceptor{
 
@@ -10,6 +13,11 @@ public class MyInterceptor implements Interceptor{
 		return true;
 	}
 
+	@Override
+	public boolean useAround() { 
+		return true;
+	}
+	
 	@Override
 	public void after() {
 		System.out.println("after ......");		
@@ -33,9 +41,6 @@ public class MyInterceptor implements Interceptor{
 		System.out.println("afterThrowing ......");		
 	}
 
-	@Override
-	public boolean useAround() { 
-		return true;
-	}
+
 	
 }
