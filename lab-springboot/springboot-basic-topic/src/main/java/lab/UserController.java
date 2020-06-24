@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import lab.aspect.validator.UserValidator;
 import lab.pojo.User;
 import lab.service.UserService;
 
@@ -21,7 +22,10 @@ public class UserController {
 		user.setId(id);
 		user.setUserName(userName);
 		user.setNote(note);
-		userService.printUser(user);
+		UserValidator userValidator = (UserValidator)userService;
+		if(userValidator.validate(user)) {
+			userService.printUser(user);
+		}
 		return user;
 	}
 }
