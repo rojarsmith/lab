@@ -3,10 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import { counter } from './redux/reducers'
+import { createLogger } from 'redux-logger';
 
-const store = createStore(counter);
+const logger = createLogger();
+
+const store = createStore(counter, applyMiddleware(logger));
 console.log(store);
 
 const render = () => {
