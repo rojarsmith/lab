@@ -1,1 +1,1 @@
-svrx --route route.js --port 2000
+svrx --mock --route route.js --port 2000
