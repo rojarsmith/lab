@@ -14,6 +14,40 @@ class App extends Component {
     this.props.store.dispatch({ type: DECREMENT, data: number });
   }
 
+  findPerson = () => {
+    this.props.store.dispatch(this.fetchPerson('1'));
+  }
+
+  fetchPerson = (id) => {
+    return function (dispatch) {
+      dispatch({
+        type: 'FIND_PERSON',
+        data: id
+      });
+
+      let headers = new Headers({
+        'Access-Control-Allow-Origin': '*'
+      });
+
+      let defaults = {
+        headers: headers,
+        url: 'http://localhost:2000/api/person/2',
+        method: 'GET'
+      };
+
+      let options = Object.assign({}, defaults);
+
+      fetch(options.url, options)
+        .then(response =>
+          response.json().then(json => {
+            dispatch({
+              type: 'FETCH_PERSON',
+              data: json.name
+            });
+          }));
+    }
+  }
+
   render() {
     const { number, name } = this.props.store.getState();
     console.log(this.props.store.getState());
@@ -30,11 +64,11 @@ class App extends Component {
           </select>
           <button onClick={this.increment}>+</button>
           <button onClick={this.decrement}>-</button>
+          <button onClick={this.findPerson}>findPerson</button>
         </div>
       </div>
     );
   }
 }
-
 
 export default App;

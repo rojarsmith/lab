@@ -6,10 +6,11 @@ import * as serviceWorker from './serviceWorker';
 import { createStore, applyMiddleware } from 'redux';
 import { counter } from './redux/reducers'
 import { createLogger } from 'redux-logger';
+import thunk from 'redux-thunk';
 
 const logger = createLogger();
 
-const store = createStore(counter, applyMiddleware(logger));
+const store = createStore(counter, applyMiddleware(thunk, logger));
 console.log(store);
 
 const render = () => {
