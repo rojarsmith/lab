@@ -3,4 +3,4 @@ pluginManagement {
 		gradlePluginPortal()
 	}
 }
-rootProject.name = 'spring-boot-basic-topic'
+rootProject.name = 'lab-springboot-basic'
