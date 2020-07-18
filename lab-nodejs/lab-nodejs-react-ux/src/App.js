@@ -11,46 +11,43 @@ function App() {
   const [open, setOpen] = useState(false);
 
   const handleClick = event => setOpen(!open);
-  // const handleClick = (props) => {
-  //   setOpen(!open);
-  // }
 
   return (
     <div className="App">
-      <header className="App-header">
+      <section class="navigation">
+        <header className="App-header">
+          <div>
+            <nav>
+              <ul className="nav-menu-list header-nav">
+                <li>
+                  <Link to="/">Page 1</Link>
+                </li>
+                <li>
+                  <Link to="/page2">Page 2</Link>
+                </li>
+              </ul>
+            </nav>
+          </div>
+          <div class="nav-menu-button">
+            <HamburgerMenu
+              isOpen={open}
+              menuClicked={handleClick}
+              width={36}
+              height={30}
+              strokeWidth={3}
+              rotate={0}
+              color='black'
+              borderRadius={3}
+              animationDuration={0.5} />
+          </div>
+        </header>
         <div>
-          <ul className="uk-navbar-nav">
-            <li>
-              <Link to="/">Page 1</Link>
-            </li>
-            <li>
-              <Link to="/page2">Page 2</Link>
-            </li>
-          </ul>
+          <Switch>
+            <Route path="/" component={Comp1} exact />
+            <Route path="/page2" component={Comp2} exact />
+          </Switch>
         </div>
-        <div>
-          <HamburgerMenu
-            isOpen={open}
-            menuClicked={handleClick}
-            width={18}
-            height={15}
-            strokeWidth={1}
-            rotate={0}
-            color='black'
-            borderRadius={0}
-            animationDuration={0.5} />
-        </div>
-        <div class="navicon">
-          {/* <a class="nav-toggle" href="#"><span></span></a> */}
-
-        </div>
-      </header>
-      <div>
-        <Switch>
-          <Route path="/" component={Comp1} exact />
-          <Route path="/page2" component={Comp2} exact />
-        </Switch>
-      </div>
+      </section>
     </div>
   );
 }

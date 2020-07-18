@@ -36,3 +36,43 @@
     transform: rotate(360deg);
   }
 }
+
+header {
+	padding: 50px 0;
+	border-bottom: solid 1px rgba(255, 255, 255, 0.2);
+	position: relative;
+	width: 1170px;
+	margin: 0 auto;
+}
+
+/* .navigation {
+	-webkit-transition: all 300ms ease-in-out;
+	transition: all 300ms ease-in-out;
+	position: fixed;
+	width: 100%;
+	z-index: 999;
+} */
+
+.nav-menu-button {
+  position: absolute;
+  top: 0;
+  right: 15px;
+  z-index: 999999;
+  padding: 3vh 1vw 0vh 1vw;
+  cursor: pointer;
+}
+
+header ul.nav-menu-list {
+  display: inline-block;
+	margin: 0 0 0 75px;
+}
+
+header ul.nav-menu-list li {
+	display: inline;
+}
+
+header ul.nav-menu-list li a {
+	padding-right: 25px;
+}
+
+
