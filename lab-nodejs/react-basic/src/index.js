@@ -2,7 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 //import App from './App';
+import './components/ComponentA'
 import * as serviceWorker from './serviceWorker';
+import ComponentA from './components/ComponentA';
 
 const multiButton = () => {
   var output=[];
@@ -18,6 +20,7 @@ const getValue = (event) => {
 
 ReactDOM.render(
   <React.StrictMode>
+    <ComponentA theme='dark' />
     { multiButton() }
     <button value={true} onClick={getValue}>Get value</button>
   </React.StrictMode>,
