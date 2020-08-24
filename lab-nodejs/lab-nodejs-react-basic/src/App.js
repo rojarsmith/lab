@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import ComponentA from './components/ComponentA';
+import { MyComponent } from './components/CreateForwardRef';
 
 const multiButton = () => {
   var output = [];
@@ -17,6 +18,7 @@ const getValue = (event) => {
 function App() {
   return (
     <div>
+      <MyComponent />
       <ComponentA theme='dark' />
       {multiButton()}
       <button value={true} onClick={getValue}>Get value</button>
