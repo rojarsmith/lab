@@ -31,12 +31,8 @@ class MyComponent extends React.Component {
 
 export { MyComponent };
 
-// const FancyButton = React.forwardRef((props, ref) => (
-//     <button ref={}>
-
-//     </button>
-// ));
-
-// export default function CreateForwardRef(props) {
-
-// }
+export const FancyButton = React.forwardRef((props, ref) => (
+    <button ref={ref}>
+        {props.children}
+    </button>
+));

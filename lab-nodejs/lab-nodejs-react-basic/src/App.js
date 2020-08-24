@@ -1,12 +1,12 @@
 import React from 'react';
 import './App.css';
 import ComponentA from './components/ComponentA';
-import { MyComponent } from './components/CreateForwardRef';
+import { MyComponent, FancyButton } from './components/CreateForwardRef';
 
 const multiButton = () => {
   var output = [];
   for (let i = 0; i < 4; ++i) {
-    output.push(<button>{i}</button>)
+    output.push(<button key={i}>{i}</button>)
   }
   return output;
 }
@@ -16,8 +16,11 @@ const getValue = (event) => {
 }
 
 function App() {
+  const ref = React.createRef();
+
   return (
     <div>
+      <FancyButton ref={ref}>Click me!</FancyButton>
       <MyComponent />
       <ComponentA theme='dark' />
       {multiButton()}
