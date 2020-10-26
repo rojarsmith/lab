@@ -65,3 +65,12 @@ exports.timer6 = () => {
         console.log('Time elapsed: ' + (endTime - startTime) + ' ms');
     }, 1000);
 }
+
+exports.lab1 = () => {
+    // timer.timer();
+    this.timer2();
+    this.timer3();
+    this.timer4();
+    this.timer5();
+    this.timer6();
+}
