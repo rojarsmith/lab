@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-import AmountComponent from './CurrencyConverter/AmountComponent';
+// import AmountComponent from './CurrencyConverter/AmountComponent';
+import AmountChildrenComponent from './CurrencyConverter/AmountChildrenComponent';
 
 const Euro = ({ amount }) => <p>Euro: {amount * 0.86}</p>;
 
@@ -33,14 +34,14 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <AmountComponent
+        <AmountChildrenComponent
           amount={amount}
           onIncrement={onIncrement}
           onDecrement={onDecrement}
-        />
-
-        <Euro amount={amount} />
-        <Pound amount={amount} />
+        >
+          <Euro amount={amount} />
+          <Pound amount={amount} />
+        </AmountChildrenComponent>
       </header>
     </div>
   );
