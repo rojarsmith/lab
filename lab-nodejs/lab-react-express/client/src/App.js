@@ -22,9 +22,11 @@ function App() {
   const [todos, setTodos] = useState();
   const [isLoadingTodos, setIsLoadingTodos] = useState(false);
 
-  const TodoListOne = withTodosEmpty(TodoList);
-  const TodoListTwo = withTodosNull(TodoListOne);
-  const TodoListThree = withLoadingIndicator(TodoListTwo);
+  // const TodoListOne = withTodosEmpty(TodoList);
+  // const TodoListTwo = withTodosNull(TodoListOne);
+  // const TodoListThree = withLoadingIndicator(TodoListTwo);
+
+  const TodoListWithConditionalRendering = withLoadingIndicator(withTodosNull(withTodosEmpty(TodoList)));
 
   useEffect(() => {
     fetch('/api')
@@ -38,7 +40,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <TodoListThree todos={todos} isLoadingTodos={isLoadingTodos} />
+        <TodoListWithConditionalRendering todos={todos} isLoadingTodos={isLoadingTodos} />
         <Amount
           renderAmountOne={amount => (
             <div>
