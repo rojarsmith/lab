@@ -20,8 +20,11 @@ const CurrenciesWithAmount = withAmount([Euro, Pound]);
 function App() {
   const [amount, setAmount] = useState(0);
   const [todos, setTodos] = useState();
+  const [isLoadingTodos, setIsLoadingTodos] = useState(false);
 
-  const TodoListWithNull = withTodosNull(TodoList);
+  const TodoListOne = withTodosEmpty(TodoList);
+  const TodoListTwo = withTodosNull(TodoListOne);
+  const TodoListThree = withLoadingIndicator(TodoListTwo);
 
   useEffect(() => {
     fetch('/api')
@@ -35,7 +38,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <TodoListWithNull todos={todos} />
+        <TodoListThree todos={todos} isLoadingTodos={isLoadingTodos} />
         <Amount
           renderAmountOne={amount => (
             <div>
@@ -63,23 +66,23 @@ function App() {
 export default App;
 
 function TodoList({ todos, isLoadingTodos }) {
-  if (isLoadingTodos) {
-    return (
-      <div>
-        <p>Loading todos ...</p>
-      </div>
-    );
-  }
+  // if (isLoadingTodos) {
+  //   return (
+  //     <div>
+  //       <p>Loading todos ...</p>
+  //     </div>
+  //   );
+  // }
 
   // Removed conditional rendering with null check
 
-  if (!todos.length) {
-    return (
-      <div>
-        <p>You have no Todos.</p>
-      </div>
-    );
-  }
+  // if (!todos.length) {
+  //   return (
+  //     <div>
+  //       <p>You have no Todos.</p>
+  //     </div>
+  //   );
+  // }
 
   return (
     <div>
@@ -102,3 +105,14 @@ const withTodosNull = (Component) => (props) =>
     ? null
     : <Component {...props} />
 
+
+const withTodosEmpty = (Component) => (props) =>
+  !props.todos.length
+    ? <div><p>You have no Todos.</p></div>
+    : <Component {...props} />
+
+// JavaScript ES6 rest destructuring 
+const withLoadingIndicator = (Component) => ({ isLoadingTodos, ...others }) =>
+  isLoadingTodos
+    ? <div><p>Loading todos ...</p></div>
+    : <Component {...others} />
