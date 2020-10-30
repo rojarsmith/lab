@@ -26,7 +26,10 @@ function App() {
   // const TodoListTwo = withTodosNull(TodoListOne);
   // const TodoListThree = withLoadingIndicator(TodoListTwo);
 
-  const TodoListWithConditionalRendering = withLoadingIndicator(withTodosNull(withTodosEmpty(TodoList)));
+  const conditionFn = (props) => !props.todos;
+
+  // const TodoListWithConditionalRendering = withLoadingIndicator(withTodosNull(withTodosEmpty(TodoList)));
+  const TodoListWithConditionalRendering = withLoadingIndicator(withCondition(withTodosEmpty(TodoList), conditionFn));
 
   useEffect(() => {
     fetch('/api')
@@ -107,6 +110,10 @@ const withTodosNull = (Component) => (props) =>
     ? null
     : <Component {...props} />
 
+    const withCondition = (Component, conditionalRenderingFn) => (props) =>
+conditionalRenderingFn(props)
+    ? null
+    : <Component {...props} />
 
 const withTodosEmpty = (Component) => (props) =>
   !props.todos.length
