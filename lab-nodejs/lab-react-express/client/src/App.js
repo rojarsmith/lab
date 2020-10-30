@@ -28,8 +28,20 @@ function App() {
 
   const conditionFn = (props) => !props.todos;
 
+  const EmptyMessage = () =>
+    <div>
+      <p>You have no Todos.</p>
+    </div>
+
+  const LoadingIndicator = () =>
+    <div>
+      <p>Loading todos ...</p>
+    </div>
+
   // const TodoListWithConditionalRendering = withLoadingIndicator(withTodosNull(withTodosEmpty(TodoList)));
-  const TodoListWithConditionalRendering = withLoadingIndicator(withCondition(withTodosEmpty(TodoList), conditionFn));
+  // const TodoListWithConditionalRendering = withLoadingIndicator(withCondition(withTodosEmpty(TodoList), conditionFn));
+  const TodoListWithConditionalRendering = withEither(
+    withLoadingIndicator(withTodosEmpty(TodoList)), conditionFn, LoadingIndicator);
 
   useEffect(() => {
     fetch('/api')
@@ -110,9 +122,14 @@ const withTodosNull = (Component) => (props) =>
     ? null
     : <Component {...props} />
 
-    const withCondition = (Component, conditionalRenderingFn) => (props) =>
-conditionalRenderingFn(props)
+const withCondition = (conditionalRenderingFn) => (Component) => (props) =>
+  conditionalRenderingFn(props)
     ? null
+    : <Component {...props} />
+
+const withEither = (conditionalRenderingFn, EitherComponent) => (Component) => (props) =>
+  conditionalRenderingFn(props)
+    ? <EitherComponent />
     : <Component {...props} />
 
 const withTodosEmpty = (Component) => (props) =>
