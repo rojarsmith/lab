@@ -21,6 +21,8 @@ function App() {
   const [amount, setAmount] = useState(0);
   const [todos, setTodos] = useState();
 
+  const TodoListWithNull = withTodosNull(TodoList);
+
   useEffect(() => {
     fetch('/api')
       .then(res => res.text())
@@ -33,7 +35,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <TodoList todos={todos} />
+        <TodoListWithNull todos={todos} />
         <Amount
           renderAmountOne={amount => (
             <div>
@@ -58,6 +60,8 @@ function App() {
   );
 }
 
+export default App;
+
 function TodoList({ todos, isLoadingTodos }) {
   if (isLoadingTodos) {
     return (
@@ -67,9 +71,7 @@ function TodoList({ todos, isLoadingTodos }) {
     );
   }
 
-  if (!todos) {
-    return null;
-  }
+  // Removed conditional rendering with null check
 
   if (!todos.length) {
     return (
@@ -86,4 +88,17 @@ function TodoList({ todos, isLoadingTodos }) {
   );
 }
 
-export default App;
+// function withTodosNull(Component) {
+//   return function (props) {
+//     return !props.todos
+//       ? null
+//       : <Component {...props} />
+//   }
+// }
+
+// JavaScript ES6 arrow functions
+const withTodosNull = (Component) => (props) =>
+  !props.todos
+    ? null
+    : <Component {...props} />
+
