@@ -1,7 +1,7 @@
 import { Component } from 'react';
 
 // Component composition with children prop
-class Amount extends Component {
+class AmountChildrenComponent extends Component {
   render() {
     return (
       <div>
@@ -20,4 +20,4 @@ class Amount extends Component {
   }
 }
 
-export default Amount;
+export default AmountChildrenComponent;
