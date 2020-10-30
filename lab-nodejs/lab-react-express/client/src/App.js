@@ -5,10 +5,13 @@ import './App.css';
 // import Amount from './CurrencyConverter/AmountComponent';
 // import Amount from './CurrencyConverter/AmountChildrenComponent';
 import Amount from './CurrencyConverter/AmountRenderPropComponent';
+import withAmount from './CurrencyConverter/AmountRenderPropHocComponent';
 
 const Euro = ({ amount }) => <p>Euro: {amount * 0.86}</p>;
 
 const Pound = ({ amount }) => <p>Pound: {amount * 0.76}</p>;
+
+const CurrenciesWithAmount = withAmount([Euro, Pound]);
 
 // Config proxy parameter in the package.json avoid CROS.
 // "proxy": "http://localhost:5020"
@@ -44,6 +47,8 @@ function App() {
           )}
         >
         </Amount>
+        Hoc
+        <CurrenciesWithAmount />
       </header>
     </div>
   );
