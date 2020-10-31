@@ -6,6 +6,7 @@ import './App.css';
 // import Amount from './CurrencyConverter/AmountChildrenComponent';
 import Amount from './CurrencyConverter/AmountRenderPropComponent';
 import withAmount from './CurrencyConverter/AmountRenderPropHocComponent';
+import { withTodosNull, withCondition, withEither, withTodosEmpty, withLoadingIndicator } from './HigherOrderComponent/WithTodos';
 
 const Euro = ({ amount }) => <p>Euro: {amount * 0.86}</p>;
 
@@ -107,38 +108,3 @@ function TodoList({ todos, isLoadingTodos }) {
     </div>
   );
 }
-
-// function withTodosNull(Component) {
-//   return function (props) {
-//     return !props.todos
-//       ? null
-//       : <Component {...props} />
-//   }
-// }
-
-// JavaScript ES6 arrow functions
-const withTodosNull = (Component) => (props) =>
-  !props.todos
-    ? null
-    : <Component {...props} />
-
-const withCondition = (conditionalRenderingFn) => (Component) => (props) =>
-  conditionalRenderingFn(props)
-    ? null
-    : <Component {...props} />
-
-const withEither = (conditionalRenderingFn, EitherComponent) => (Component) => (props) =>
-  conditionalRenderingFn(props)
-    ? <EitherComponent />
-    : <Component {...props} />
-
-const withTodosEmpty = (Component) => (props) =>
-  !props.todos.length
-    ? <div><p>You have no Todos.</p></div>
-    : <Component {...props} />
-
-// JavaScript ES6 rest destructuring 
-const withLoadingIndicator = (Component) => ({ isLoadingTodos, ...others }) =>
-  isLoadingTodos
-    ? <div><p>Loading todos ...</p></div>
-    : <Component {...others} />
