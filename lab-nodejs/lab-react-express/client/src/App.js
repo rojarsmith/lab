@@ -2,6 +2,7 @@ import Fragment, { useState, useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+import axios from 'axios';
 // import Amount from './CurrencyConverter/AmountComponent';
 // import Amount from './CurrencyConverter/AmountChildrenComponent';
 import Amount from './CurrencyConverter/AmountRenderPropComponent';
@@ -45,17 +46,25 @@ function App() {
   const TodoListWithConditionalRendering = withEither(
     withLoadingIndicator(withTodosEmpty(TodoList)), conditionFn, LoadingIndicator);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const result = await fetch(
-        '/api/news/search?query=redux',
-      ).then((res) => res.json());
-      console.log(result);
-      setData(result);
-    }
+  useEffect(async () => {
+    const result = await axios(
+      '/api/news/search?query=redux',
+    );
 
-    fetchData();
+    setData(result.data);
   }, []);
+
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const result = await fetch(
+  //       '/api/news/search?query=redux',
+  //     ).then((res) => res.json());
+  //     console.log(result);
+  //     setData(result);
+  //   }
+
+  //   fetchData();
+  // }, []);
 
   useEffect(() => {
     fetch('/api')
@@ -87,43 +96,46 @@ function App() {
           renderAmountTwo={amount => (
             <div>
               <h2>My two Amount</h2>
-              <Euro amount={amount} />
-              <Pound amount={amount} />
+              <Euro key='euro' amount={amount} />
+              <Pound key='pound' amount={amount} />
             </div>
           )}
         >
         </Amount>
         Hoc
-        <CurrenciesWithAmount />
+        <CurrenciesWithAmount amount={amount} />
       </header>
     </div>
   );
+
+  function TodoList({ todos, isLoadingTodos }) {
+    // if (isLoadingTodos) {
+    //   return (
+    //     <div>
+    //       <p>Loading todos ...</p>
+    //     </div>
+    //   );
+    // }
+
+    // Removed conditional rendering with null check
+
+    // if (!todos.length) {
+    //   return (
+    //     <div>
+    //       <p>You have no Todos.</p>
+    //     </div>
+    //   );
+    // }
+
+    return (
+      <div>
+        {todos.map(todo => <li key={todo.id} todo={todo} />)}
+      </div>
+    );
+  }
+
 }
 
 export default App;
 
-function TodoList({ todos, isLoadingTodos }) {
-  // if (isLoadingTodos) {
-  //   return (
-  //     <div>
-  //       <p>Loading todos ...</p>
-  //     </div>
-  //   );
-  // }
 
-  // Removed conditional rendering with null check
-
-  // if (!todos.length) {
-  //   return (
-  //     <div>
-  //       <p>You have no Todos.</p>
-  //     </div>
-  //   );
-  // }
-
-  return (
-    <div>
-      {todos.map(todo => <li key={todo.id} todo={todo} />)}
-    </div>
-  );
-}

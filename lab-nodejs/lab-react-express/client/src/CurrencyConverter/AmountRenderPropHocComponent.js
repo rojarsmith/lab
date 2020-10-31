@@ -8,7 +8,10 @@ const withAmount = currencyComponents =>
 
       this.state = {
         amount: 0,
+        key: ''
       };
+      console.log(this.state);
+      console.log(props);
     }
 
     onIncrement = () => {
