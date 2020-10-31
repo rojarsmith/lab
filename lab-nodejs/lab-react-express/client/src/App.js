@@ -8,6 +8,7 @@ import axios from 'axios';
 import Amount from './CurrencyConverter/AmountRenderPropComponent';
 import withAmount from './CurrencyConverter/AmountRenderPropHocComponent';
 import { withTodosNull, withCondition, withEither, withTodosEmpty, withLoadingIndicator } from './HigherOrderComponent/WithTodos';
+import useHackerNewsApi from './CustomHook/DataFetch';
 
 const Euro = ({ amount }) => <p>Euro: {amount * 0.86}</p>;
 
@@ -23,14 +24,15 @@ function App() {
   const [amount, setAmount] = useState(0);
   const [todos, setTodos] = useState();
   const [isLoadingTodos, setIsLoadingTodos] = useState(false);
-  const [data, setData] = useState({ hits: [] });
+  // const [data, setData] = useState({ hits: [] });
   const [query, setQuery] = useState('redux');
   const [search, setSearch] = useState('redux');
   const [url, setUrl] = useState(
     '/api/news/search?query=redux',
   );
-  const [isLoading, setIsLoading] = useState(false);
-  const [isError, setIsError] = useState(false);
+  // const [isLoading, setIsLoading] = useState(false);
+  // const [isError, setIsError] = useState(false);
+  const [{ data, isLoading, isError }, doFetch] = useHackerNewsApi();
 
   // const TodoListOne = withTodosEmpty(TodoList);
   // const TodoListTwo = withTodosNull(TodoListOne);
@@ -53,24 +55,24 @@ function App() {
   const TodoListWithConditionalRendering = withEither(
     withLoadingIndicator(withTodosEmpty(TodoList)), conditionFn, LoadingIndicator);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      setIsError(false);
-      setIsLoading(true);
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     setIsError(false);
+  //     setIsLoading(true);
 
-      try {
-        const result = await axios(url);
+  //     try {
+  //       const result = await axios(url);
 
-        setData(result.data);
-      } catch (error) {
-        setIsError(true);
-      }
+  //       setData(result.data);
+  //     } catch (error) {
+  //       setIsError(true);
+  //     }
 
-      setIsLoading(false);
-    }
+  //     setIsLoading(false);
+  //   }
 
-    fetchData();
-  }, [url]);
+  //   fetchData();
+  // }, [url]);
 
   // useEffect(() => {
   //   const fetchData = async () => {
@@ -97,7 +99,7 @@ function App() {
     <div className="App">
       <form
         onSubmit={(event) => {
-          setUrl(`/api/news/search?query=${query}`)
+          doFetch(`/api/news/search?query=${query}`);
 
           event.preventDefault();
         }}>
