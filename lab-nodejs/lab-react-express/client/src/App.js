@@ -24,6 +24,8 @@ function App() {
   const [todos, setTodos] = useState();
   const [isLoadingTodos, setIsLoadingTodos] = useState(false);
   const [data, setData] = useState({ hits: [] });
+  const [query, setQuery] = useState('redux');
+  const [search, setSearch] = useState('redux');
 
   // const TodoListOne = withTodosEmpty(TodoList);
   // const TodoListTwo = withTodosNull(TodoListOne);
@@ -48,11 +50,11 @@ function App() {
 
   useEffect(async () => {
     const result = await axios(
-      '/api/news/search?query=redux',
+      `/api/news/search?query=${search}`,
     );
 
     setData(result.data);
-  }, []);
+  }, [search]);
 
   // useEffect(() => {
   //   const fetchData = async () => {
@@ -77,34 +79,41 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        {data.hits.map(item => (
-          <li key={item.objectID}>
-            <a href={item.url}>{item.title}</a>
-          </li>
-        ))}
+      <input
+        type="text"
+        value={query}
+        onChange={event => setQuery(event.target.value)}
+      />
+      <button type="button" onClick={() => setSearch(query)}>
+        Search
+      </button>
 
-        <TodoListWithConditionalRendering todos={todos} isLoadingTodos={isLoadingTodos} />
-        <Amount
-          renderAmountOne={amount => (
-            <div>
-              <h2>My one Amount</h2>
-              <Euro amount={amount} />
-              <Pound amount={amount} />
-            </div>
-          )}
-          renderAmountTwo={amount => (
-            <div>
-              <h2>My two Amount</h2>
-              <Euro key='euro' amount={amount} />
-              <Pound key='pound' amount={amount} />
-            </div>
-          )}
-        >
-        </Amount>
+      {data.hits.map(item => (
+        <li key={item.objectID}>
+          <a href={item.url}>{item.title}</a>
+        </li>
+      ))}
+
+      <TodoListWithConditionalRendering todos={todos} isLoadingTodos={isLoadingTodos} />
+      <Amount
+        renderAmountOne={amount => (
+          <div>
+            <h2>My one Amount</h2>
+            <Euro amount={amount} />
+            <Pound amount={amount} />
+          </div>
+        )}
+        renderAmountTwo={amount => (
+          <div>
+            <h2>My two Amount</h2>
+            <Euro key='euro' amount={amount} />
+            <Pound key='pound' amount={amount} />
+          </div>
+        )}
+      >
+      </Amount>
         Hoc
-        <CurrenciesWithAmount amount={amount} />
-      </header>
+      <CurrenciesWithAmount amount={amount} />
     </div>
   );
 
