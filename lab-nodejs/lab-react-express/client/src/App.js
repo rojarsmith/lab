@@ -26,6 +26,9 @@ function App() {
   const [data, setData] = useState({ hits: [] });
   const [query, setQuery] = useState('redux');
   const [search, setSearch] = useState('redux');
+  const [url, setUrl] = useState(
+    '/api/news/search?query=redux',
+  );
 
   // const TodoListOne = withTodosEmpty(TodoList);
   // const TodoListTwo = withTodosNull(TodoListOne);
@@ -49,12 +52,10 @@ function App() {
     withLoadingIndicator(withTodosEmpty(TodoList)), conditionFn, LoadingIndicator);
 
   useEffect(async () => {
-    const result = await axios(
-      `/api/news/search?query=${search}`,
-    );
+    const result = await axios(url);
 
     setData(result.data);
-  }, [search]);
+  }, [url]);
 
   // useEffect(() => {
   //   const fetchData = async () => {
@@ -84,7 +85,7 @@ function App() {
         value={query}
         onChange={event => setQuery(event.target.value)}
       />
-      <button type="button" onClick={() => setSearch(query)}>
+      <button type="button" onClick={() => setUrl(`/api/news/search?query=${query}`)}>
         Search
       </button>
 
