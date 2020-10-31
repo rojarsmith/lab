@@ -26,13 +26,16 @@ function App() {
   const [isLoadingTodos, setIsLoadingTodos] = useState(false);
   // const [data, setData] = useState({ hits: [] });
   const [query, setQuery] = useState('redux');
-  const [search, setSearch] = useState('redux');
-  const [url, setUrl] = useState(
-    '/api/news/search?query=redux',
-  );
+  // const [search, setSearch] = useState('redux');
+  // const [url, setUrl] = useState(
+  //   '/api/news/search?query=redux',
+  // );
   // const [isLoading, setIsLoading] = useState(false);
   // const [isError, setIsError] = useState(false);
-  const [{ data, isLoading, isError }, doFetch] = useHackerNewsApi();
+  const [{ data, isLoading, isError }, doFetch] = useHackerNewsApi(
+    '/api/news/search?query=redux',
+    { hits: [] }
+  );
 
   // const TodoListOne = withTodosEmpty(TodoList);
   // const TodoListTwo = withTodosNull(TodoListOne);

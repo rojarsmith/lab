@@ -1,11 +1,9 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const useHackerNewsApi = () => {
-    const [data, setData] = useState({ hits: [] });
-    const [url, setUrl] = useState(
-      '/api/news/search?query=redux',
-    );
+const useDataApi = (initialUrl, initialData) => {
+    const [data, setData] = useState(initialData);
+    const [url, setUrl] = useState(initialUrl);
     const [isLoading, setIsLoading] = useState(false);
     const [isError, setIsError] = useState(false);
    
@@ -31,4 +29,4 @@ const useHackerNewsApi = () => {
     return [{ data, isLoading, isError }, setUrl];
   }
 
-  export default useHackerNewsApi;
+  export default useDataApi;
