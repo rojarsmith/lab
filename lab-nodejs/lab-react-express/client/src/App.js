@@ -29,6 +29,8 @@ function App() {
   const [url, setUrl] = useState(
     '/api/news/search?query=redux',
   );
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
 
   // const TodoListOne = withTodosEmpty(TodoList);
   // const TodoListTwo = withTodosNull(TodoListOne);
@@ -51,10 +53,23 @@ function App() {
   const TodoListWithConditionalRendering = withEither(
     withLoadingIndicator(withTodosEmpty(TodoList)), conditionFn, LoadingIndicator);
 
-  useEffect(async () => {
-    const result = await axios(url);
+  useEffect(() => {
+    const fetchData = async () => {
+      setIsError(false);
+      setIsLoading(true);
 
-    setData(result.data);
+      try {
+        const result = await axios(url);
+
+        setData(result.data);
+      } catch (error) {
+        setIsError(true);
+      }
+
+      setIsLoading(false);
+    }
+
+    fetchData();
   }, [url]);
 
   // useEffect(() => {
@@ -80,20 +95,35 @@ function App() {
 
   return (
     <div className="App">
-      <input
-        type="text"
-        value={query}
-        onChange={event => setQuery(event.target.value)}
-      />
-      <button type="button" onClick={() => setUrl(`/api/news/search?query=${query}`)}>
-        Search
-      </button>
+      <form
+        onSubmit={(event) => {
+          setUrl(`/api/news/search?query=${query}`)
 
-      {data.hits.map(item => (
-        <li key={item.objectID}>
-          <a href={item.url}>{item.title}</a>
-        </li>
-      ))}
+          event.preventDefault();
+        }}>
+        <input
+          type="text"
+          value={query}
+          onChange={event => setQuery(event.target.value)}
+        />
+        <button type="submit">Search</button>
+      </form>
+
+      {isError && <div>Something went wrong ...</div>}
+
+      {isLoading ? (
+        <div>Loading ...</div>
+      ) : (
+          <ul>
+            {
+              data.hits.map(item => (
+                <li key={item.objectID}>
+                  <a href={item.url}>{item.title}</a>
+                </li>
+              ))
+            }
+          </ul>
+        )}
 
       <TodoListWithConditionalRendering todos={todos} isLoadingTodos={isLoadingTodos} />
       <Amount
