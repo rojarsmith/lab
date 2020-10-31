@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import Fragment, { useState, useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
@@ -22,6 +22,7 @@ function App() {
   const [amount, setAmount] = useState(0);
   const [todos, setTodos] = useState();
   const [isLoadingTodos, setIsLoadingTodos] = useState(false);
+  const [data, setData] = useState({ hits: [] });
 
   // const TodoListOne = withTodosEmpty(TodoList);
   // const TodoListTwo = withTodosNull(TodoListOne);
@@ -45,6 +46,18 @@ function App() {
     withLoadingIndicator(withTodosEmpty(TodoList)), conditionFn, LoadingIndicator);
 
   useEffect(() => {
+    const fetchData = async () => {
+      const result = await fetch(
+        '/api/news/search?query=redux',
+      ).then((res) => res.json());
+      console.log(result);
+      setData(result);
+    }
+
+    fetchData();
+  }, []);
+
+  useEffect(() => {
     fetch('/api')
       .then(res => res.text())
       .then(text => console.log(text))
@@ -56,6 +69,12 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+        {data.hits.map(item => (
+          <li key={item.objectID}>
+            <a href={item.url}>{item.title}</a>
+          </li>
+        ))}
+
         <TodoListWithConditionalRendering todos={todos} isLoadingTodos={isLoadingTodos} />
         <Amount
           renderAmountOne={amount => (
