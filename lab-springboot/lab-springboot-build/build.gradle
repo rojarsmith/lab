@@ -1,0 +1,6 @@
+group = 'lab'
+version = '0.0.1'
+
+allprojects {
+    task hello { task -> println "I'm $task.project.name" }
+}
