@@ -9,5 +9,4 @@ public class LabSpringbootQuerydslApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(LabSpringbootQuerydslApplication.class, args);
 	}
-
 }
