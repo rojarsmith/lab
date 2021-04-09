@@ -4,3 +4,11 @@ version = '0.0.1'
 allprojects {
     task hello { task -> println "I'm $task.project.name" }
 }
+
+subprojects {
+    hello { println "- I depend on build" }
+}
+
+project(':lab-springboot-querydsl').hello {
+    println "- I'm the QueryDSL."
+}
