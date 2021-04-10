@@ -8,15 +8,40 @@ group = 'lab'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
+ext {
+    queryDslVersion = '3.6.3'
+    //javaGeneratedSources = file("$buildDir/generated-sources/java")
+    javaGeneratedSources = file("$projectDir/src/main/java")
+}
+
 repositories {
 	mavenCentral()
 }
 
+compileJava {
+    doFirst {
+        javaGeneratedSources.mkdirs()
+    }
+    options.compilerArgs += [
+            '-parameters', '-s', javaGeneratedSources
+    ]
+}
+
 dependencies {
+    implementation 'com.querydsl:querydsl-jpa:4.4.0'
+    annotationProcessor 'com.querydsl:querydsl-apt:4.4.0:jpa'
+    testImplementation 'com.querydsl:querydsl-jpa:4.4.0'
+    testAnnotationProcessor 'com.querydsl:querydsl-apt:4.4.0:jpa'
+
+    annotationProcessor 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+    implementation 'jakarta.annotation:jakarta.annotation-api'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	runtimeOnly 'com.h2database:h2'
+	annotationProcessor "org.projectlombok:lombok"
+    compileOnly "org.projectlombok:lombok"
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
