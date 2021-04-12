@@ -9,14 +9,20 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value="/customer")
+@RequestMapping(value = "/customer")
 public class CustomerController {
 	@Autowired
 	private CustomerDao customerDao;
-	
-	@GetMapping(value="/getCustomer")
+
+	@GetMapping(value = "/getCustomer")
 	public List<Customer> getCustomer(@RequestParam String firstName, @RequestParam String lastName) {
 		List<Customer> list = customerDao.findCustomer(firstName, lastName);
 		return list;
+	}
+
+	@GetMapping(value = "/getOrder")
+	public List<DetailDto> getOrder(@RequestParam String firstName, @RequestParam String lastName) {
+		List<DetailDto> dtos = customerDao.findOrder(firstName, lastName);
+		return dtos;
 	}
 }
