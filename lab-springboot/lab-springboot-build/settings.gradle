@@ -8,4 +8,4 @@
  */
 
 rootProject.name = 'lab-springboot-build'
-includeFlat  'lab-springboot-querydsl'
+includeFlat  'lab-springboot-querydsl', 'lab-springboot-jackson'
