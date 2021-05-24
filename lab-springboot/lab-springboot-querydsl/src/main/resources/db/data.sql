@@ -1,8 +1,8 @@
 insert into CUSTOMER values(
 '1',
 'M0001',
-'Kenneth',
-'McCormick'
+'Rojar',
+'Smith'
 );
 
 insert into CUSTOMER values(
