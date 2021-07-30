@@ -1,5 +1,7 @@
 package lab.aspect;
 
+import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.AfterThrowing;
@@ -9,16 +11,19 @@ import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.DeclareParents;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.core.annotation.Order;
-import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.ProceedingJoinPoint;
 
 import lab.aspect.validator.UserValidator;
 import lab.aspect.validator.impl.UserValidatorImpl;
 import lab.pojo.User;
 
-@Order(1)
+/**
+ * @author Rojar Smith
+ *
+ * @date 2021-07-30
+ */
+@Order(2)
 @Aspect
-public class MyAspect {
+public class MyAspect2 {
 	@Pointcut("execution (* lab.service.impl.UserServiceImpl.printUser(..))")
 	public void pointCut() {
 	}
@@ -27,7 +32,7 @@ public class MyAspect {
 	public void before(JoinPoint jp, User user) {
 		@SuppressWarnings("unused")
 		Object[] args = jp.getArgs();
-		System.out.println("before ....");
+		System.out.println("2 before ....");
 	}
 
 	@DeclareParents(value = "lab.service.impl.UserServiceImpl", defaultImpl = UserValidatorImpl.class)
@@ -37,24 +42,24 @@ public class MyAspect {
 	public Object around(ProceedingJoinPoint jp) throws Throwable {
 		@SuppressWarnings("unused")
 		Object[] argsObjects = jp.getArgs();
-		System.out.println("around before....");
+		System.out.println("2 around before....");
 		Object proceed = jp.proceed();
-		System.out.println("around after....");
+		System.out.println("2 around after....");
 		return proceed;
 	}
 
 	@After("pointCut()")
 	public void after() {
-		System.out.println("after ....");
+		System.out.println("2 after ....");
 	}
 
 	@AfterReturning("pointCut()")
 	public void afterReturningbefore() {
-		System.out.println("afterReturning ....");
+		System.out.println("2 afterReturning ....");
 	}
 
 	@AfterThrowing("pointCut()")
 	public void afterThrowing() {
-		System.out.println("afterThrowing ....");
+		System.out.println("2 afterThrowing ....");
 	}
 }
