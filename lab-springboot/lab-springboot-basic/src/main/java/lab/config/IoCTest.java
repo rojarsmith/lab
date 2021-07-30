@@ -1,6 +1,8 @@
 package lab.config;
 
-import org.jboss.logging.Logger;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -12,12 +14,12 @@ import lab.pojo.definition.Person;
 import lab.scope.pojo.ScopeBean;
 
 public class IoCTest {
-	private static Logger log = Logger.getLogger(IoCTest.class);
+	private static Logger log = LoggerFactory.getLogger(IoCTest.class);
 
 	public static void main(String[] args) {
 		AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
 		User user = ctx.getBean(User.class);
-		log.info(user.getId());		
+		log.info(user.getId().toString());		
 		
 		DataBaseProperties db = ctx.getBean(DataBaseProperties.class);
 				

@@ -17,7 +17,6 @@ import org.springframework.stereotype.Component;
 
 import lab.pojo.definition.Animal;
 import lab.pojo.definition.Person;
-import net.bytebuddy.asm.Advice.This;
 
 @Component
 public class BussinessPerson
