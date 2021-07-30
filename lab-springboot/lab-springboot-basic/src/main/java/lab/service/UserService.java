@@ -1,7 +1,5 @@
 package lab.service;
 
-import org.springframework.stereotype.Service;
-
 import lab.pojo.User;
 
 public interface UserService {
